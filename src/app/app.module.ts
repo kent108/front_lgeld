@@ -13,6 +13,9 @@ import { PageContactComponent } from './pages/page-contact/page-contact.componen
 import { PagePastryComponent } from './pages/page-pastry/page-pastry.component';
 import { PageTraiteurComponent } from './pages/page-traiteur/page-traiteur.component';
 import { PageConnectComponent } from './pages/page-connect/page-connect.component';
+import { PageAboutComponent } from './pages/page-about/page-about.component';
+import { PageSubscribeComponent } from './pages/page-subscribe/page-subscribe.component';
+
 
 
 
@@ -29,6 +32,8 @@ import { PageConnectComponent } from './pages/page-connect/page-connect.componen
     PagePastryComponent,
     PageTraiteurComponent,
     PageConnectComponent,
+    PageAboutComponent,
+    PageSubscribeComponent,
   ],
   imports: [
     BrowserModule,

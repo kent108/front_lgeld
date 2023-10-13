@@ -5,13 +5,18 @@ import { PageConnectComponent } from './pages/page-connect/page-connect.componen
 import { PageTraiteurComponent } from './pages/page-traiteur/page-traiteur.component';
 import { PagePastryComponent } from './pages/page-pastry/page-pastry.component';
 import { PageContactComponent } from './pages/page-contact/page-contact.component';
+import { PageAboutComponent } from './pages/page-about/page-about.component';
+import { PageSubscribeComponent } from './pages/page-subscribe/page-subscribe.component';
 
 const routes: Routes = [
-  {path: '', component: PageHomeComponent},
-  {path: 'login', component: PageConnectComponent},
-  {path: 'pastry', component: PagePastryComponent},
-  {path: 'traiteur', component: PageTraiteurComponent},
-  {path: 'contact', component: PageContactComponent}
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: PageHomeComponent },
+  { path: 'login', component: PageConnectComponent },
+  { path: 'subscribe', component: PageSubscribeComponent },
+  { path: 'about', component: PageAboutComponent },
+  { path: 'pastry', component: PagePastryComponent },
+  { path: 'traiteur', component: PageTraiteurComponent },
+  { path: 'contact', component: PageContactComponent },
 ];
 
 @NgModule({
