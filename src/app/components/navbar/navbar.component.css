@@ -1,0 +1,10 @@
+.navbar{
+    background-color: transparent;
+}
+
+@media screen and (max-width: 768px) 
+{
+.navbar{
+    font-size:25px;
+}    
+}

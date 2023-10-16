@@ -12,11 +12,11 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: PageHomeComponent },
   { path: 'login', component: PageConnectComponent },
-  { path: 'subscribe', component: PageSubscribeComponent },
   { path: 'about', component: PageAboutComponent },
   { path: 'pastry', component: PagePastryComponent },
   { path: 'traiteur', component: PageTraiteurComponent },
   { path: 'contact', component: PageContactComponent },
+  { path: 'subscribe', component: PageSubscribeComponent },
 ];
 
 @NgModule({

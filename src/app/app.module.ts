@@ -15,6 +15,10 @@ import { PageTraiteurComponent } from './pages/page-traiteur/page-traiteur.compo
 import { PageConnectComponent } from './pages/page-connect/page-connect.component';
 import { PageAboutComponent } from './pages/page-about/page-about.component';
 import { PageSubscribeComponent } from './pages/page-subscribe/page-subscribe.component';
+import { CardComponent } from './components/card/card.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AboutComponent } from './components/about/about.component';
 
 
 
@@ -34,10 +38,15 @@ import { PageSubscribeComponent } from './pages/page-subscribe/page-subscribe.co
     PageConnectComponent,
     PageAboutComponent,
     PageSubscribeComponent,
+    CardComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
