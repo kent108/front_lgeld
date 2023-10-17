@@ -9,7 +9,8 @@ import { ArticleService } from 'src/app/services/article.service';
 })
 export class CardComponent {
   @Input()
-  tabArticles! : Article[];
+  tabArticles!: Article[];
+  
 
   constructor(private articleService: ArticleService) { }
 

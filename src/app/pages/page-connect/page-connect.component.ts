@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Modal } from 'flowbite';
 import { Token } from 'src/app/models/token';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
@@ -38,12 +39,12 @@ export class PageConnectComponent {
           // 2 - Utilisation du behaviour subject (du UserService) pour transmettre la valeur true
           // this.userService.setLoggedIn(true);
 
-          // // Afficher la modale de succès
+          // Afficher la modale de succès
           // const loginModalElement = document.getElementById(
-          //   'loginModal'
+          //   'defaultModal'
           // ) as HTMLElement;
-          // const loginModal = new Modal(loginModalElement);
-          // loginModal.show();
+          // const defaultModal = new Modal(loginModalElement);
+          // defaultModal.show();
 
           // console.log('Token:', token);
         },

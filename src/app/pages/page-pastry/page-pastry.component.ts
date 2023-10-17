@@ -7,19 +7,18 @@ import { ArticleService } from 'src/app/services/article.service';
   templateUrl: './page-pastry.component.html',
   styleUrls: ['./page-pastry.component.css']
 })
-export class PagePastryComponent implements OnInit{
-  tabArticles: Article[] = [];
-  // article!: Article;
+export class PagePastryComponent implements OnInit {
+  pastryArticles: Article[] = [];
 
   constructor(
     private articleService: ArticleService
   ) { }
 
   ngOnInit(): void {
-    this.articleService.getAllArticles().subscribe((articles) => {
-      this.tabArticles = articles; console.log(this.tabArticles);
-    
-    });
-   
+    this.articleService
+      .getArticlesByTypes('Patisserie')
+      .subscribe((articles) => {
+        this.pastryArticles = articles;
+      });
   }
 }

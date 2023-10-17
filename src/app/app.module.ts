@@ -19,6 +19,7 @@ import { CardComponent } from './components/card/card.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AboutComponent } from './components/about/about.component';
+import { PageInfoComponent } from './pages/page-info/page-info.component';
 
 
 
@@ -40,6 +41,7 @@ import { AboutComponent } from './components/about/about.component';
     PageSubscribeComponent,
     CardComponent,
     AboutComponent,
+    PageInfoComponent,
   ],
   imports: [
     BrowserModule,

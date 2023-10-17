@@ -10,16 +10,17 @@ import { phoneNumberValidator } from 'src/app/validators/phone-number.validator'
 })
 export class PageSubscribeComponent {
   inscriptionForm = this.fb.group({
+    admin: [false],
     name: ['', Validators.required],
     firstname: ['', Validators.required],
-    email: ['', Validators.required],
+    mail: ['', Validators.required],
     password: ['', Validators.required],
     phone: ['', phoneNumberValidator()],
   });
 
   constructor(private fb: FormBuilder, private userService: UserService) {}
 
-  // ngOnInit(): void {}
+  ngOnInit(): void {}
 
   onSubmit(): void {
     if (this.inscriptionForm.valid) {
@@ -32,5 +33,10 @@ export class PageSubscribeComponent {
 
       this.inscriptionForm.reset(); // On vide le formulaire
     }
+  }
+
+  goToHome() {
+    close();
+    window.location.href = 'login';
   }
 }

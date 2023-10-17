@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Article } from 'src/app/models/article';
+import { ArticleService } from 'src/app/services/article.service';
 
 @Component({
   selector: 'app-page-traiteur',
@@ -6,5 +8,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./page-traiteur.component.css']
 })
 export class PageTraiteurComponent {
+  traiteurArticles: Article[] = [];
 
+  constructor(private articleService: ArticleService) { }
+
+  ngOnInit(): void {
+    this.articleService
+      .getArticlesByTypes('Traiteur')
+      .subscribe((articles) => {
+        this.traiteurArticles = articles;
+      });
+  }
 }

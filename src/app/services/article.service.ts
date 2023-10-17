@@ -15,4 +15,8 @@ export class ArticleService {
     return this.http.get<Article[]>('http://localhost:3000/api/articles');
   }
 
+  getArticlesByTypes(type: string): Observable<Article[]> {
+    return this.http.get<Article[]>('http://localhost:3000/api/articles/types/' + type);
+  }
+
 }

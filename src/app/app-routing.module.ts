@@ -7,6 +7,7 @@ import { PagePastryComponent } from './pages/page-pastry/page-pastry.component';
 import { PageContactComponent } from './pages/page-contact/page-contact.component';
 import { PageAboutComponent } from './pages/page-about/page-about.component';
 import { PageSubscribeComponent } from './pages/page-subscribe/page-subscribe.component';
+import { PageInfoComponent } from './pages/page-info/page-info.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'traiteur', component: PageTraiteurComponent },
   { path: 'contact', component: PageContactComponent },
   { path: 'subscribe', component: PageSubscribeComponent },
+  { path: 'info', component: PageInfoComponent },
 ];
 
 @NgModule({
