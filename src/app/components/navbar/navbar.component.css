@@ -6,10 +6,12 @@
     width: 110px;
 }
 
-
-@media screen and (max-width: 768px) 
-{
-.navbar{
-    font-size:25px;
-}    
+@media (max-width: 480px){
+    .navbar{
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+align-items: center;
+justify-content: center;
+    }
 }

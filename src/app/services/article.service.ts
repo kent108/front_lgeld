@@ -19,4 +19,7 @@ export class ArticleService {
     return this.http.get<Article[]>('http://localhost:3000/api/articles/types/' + type);
   }
 
+  deleteArticle(id: number): Observable<Article> {
+    return this.http.delete<Article>(`${this.url}/${id}`);
+  }
 }

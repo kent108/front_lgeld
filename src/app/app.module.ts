@@ -20,6 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AboutComponent } from './components/about/about.component';
 import { PageInfoComponent } from './pages/page-info/page-info.component';
+import { AdmintableComponent } from './components/admintable/admintable.component';
+import { PageAdminComponent } from './pages/page-admin/page-admin.component';
 
 
 
@@ -42,6 +44,8 @@ import { PageInfoComponent } from './pages/page-info/page-info.component';
     CardComponent,
     AboutComponent,
     PageInfoComponent,
+    AdmintableComponent,
+    PageAdminComponent,
   ],
   imports: [
     BrowserModule,

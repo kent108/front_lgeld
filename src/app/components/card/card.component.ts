@@ -12,7 +12,7 @@ export class CardComponent {
   tabArticles!: Article[];
   
 
-  constructor(private articleService: ArticleService) { }
+  constructor(private articleService: ArticleService,) { }
 
   ngOnChanges() {
   

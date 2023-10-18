@@ -1,15 +1,15 @@
-<nav class="border-gray-200 dark:bg-gray-900">
+<nav class="mr-3 ml-3 border-gray-200 dark:bg-gray-900">
   <div
-    class=" flex flex-wrap items-center justify-between mx-auto p-4 mr-5"
+    class=" navbar flex flex-wrap items-center justify-between mx-auto mt-1 mr-5"
   >
-    <a [routerLink]="['/home']" class="flex items-center">
+    <a [routerLink]="['/home']" class="navbar flex items-center">
       <img
         src="assets/LOGO01.png"
         class="logo"
         alt="LGELD Logo"
       />
       <span
-        class="navbar self-center text-4xl ml-5 font-medium whitespace-nowrap dark:text-white"
+        class="self-center text-3xl ml-5 font-medium whitespace-nowrap dark:text-white"
         >Les Goûts et Les Douceurs</span
       >
     </a>
@@ -81,6 +81,13 @@
             [routerLink]="['/login']"  
           class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-white-700 md:p-0 dark:text-white md:dark:hover:text-red-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
             >Connexion</a
+          >
+        </li>
+        <li>
+          <a
+            [routerLink]="['/admin']"
+            class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-white-700 md:p-0 dark:text-white md:dark:hover:text-red-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+            >Admin</a
           >
         </li>
       </ul>

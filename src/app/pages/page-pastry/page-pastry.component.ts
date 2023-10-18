@@ -16,7 +16,7 @@ export class PagePastryComponent implements OnInit {
 
   ngOnInit(): void {
     this.articleService
-      .getArticlesByTypes('Patisserie')
+      .getArticlesByTypes('Pâtisserie')
       .subscribe((articles) => {
         this.pastryArticles = articles;
       });

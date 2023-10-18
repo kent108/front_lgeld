@@ -8,6 +8,7 @@ import { PageContactComponent } from './pages/page-contact/page-contact.componen
 import { PageAboutComponent } from './pages/page-about/page-about.component';
 import { PageSubscribeComponent } from './pages/page-subscribe/page-subscribe.component';
 import { PageInfoComponent } from './pages/page-info/page-info.component';
+import { PageAdminComponent } from './pages/page-admin/page-admin.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'contact', component: PageContactComponent },
   { path: 'subscribe', component: PageSubscribeComponent },
   { path: 'info', component: PageInfoComponent },
+  { path: 'admin', component: PageAdminComponent },
 ];
 
 @NgModule({
