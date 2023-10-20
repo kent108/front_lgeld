@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Price } from '../models/price';
+import { Price, PriceToSend } from '../models/price';
 
 @Injectable({
   providedIn: 'root',
@@ -26,4 +26,13 @@ export class PriceService {
     );
   }
 
+  updatePrice(price: Price): Observable<Price> {
+    return this.http.put<Price>(this.url, price);
+  }
+ 
+  createPrice(price: PriceToSend): Observable<Price> {
+    return this.http.post<Price>(
+      this.url, price
+    );
+  }
 }

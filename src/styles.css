@@ -6,19 +6,20 @@
 
 body{
   background-color:#FFF8F7 ;
-  /* font-family: 'Kalam', cursive; */
+  font-family: 'Comfortaa', sans-serif;
 }
 
 .button {
-    max-width: 150px;
-  /* appearance: button; */
+  justify-content: center;
+    max-width: 130px;
+  appearance: button;
   background-color: #C7B0AD;
   border-radius: 16px;
   border-width: 0 0 4px;
   box-sizing: border-box;
   color: #FFFFFF;
   cursor: pointer;
-  font-size: 24px;
+  font-size: 15px;
   letter-spacing: .8px;
   line-height: 20px;
   overflow: visible;
@@ -31,9 +32,15 @@ body{
   width: 100%;
 }
 
-.button:after {
+.button:hover {
+ 
+    background-color: #F9DCD8;
+    color: #7A4C46
+}
+
+/* .button:after {
   background-clip: padding-box;
-  background-color: #C7B0AD;
+  background-color: #F9DCD8;
   border: solid transparent;
   border-radius: 16px;
   border-width: 0 0 4px;
@@ -44,18 +51,19 @@ body{
   right: 0;
   top: 0;
   z-index: -1;
-}
+} */
 
 .button:main,
 .button:focus {
   user-select: auto;
 }
 
-.button:hover:not(:disabled) {
+/* .button:hover:not(:disabled) {
   filter: brightness(1.1);
   -webkit-filter: brightness(1.1);
-}
+} */
 
 .button:disabled {
   cursor: auto;
 }
+

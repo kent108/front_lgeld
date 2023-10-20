@@ -1,0 +1,13 @@
+@media (max-width: 480px) {
+    .admintable{
+        display: flex;
+        flex-wrap: wrap;
+        width: 400px;
+
+    }
+
+    .colonne{
+      visibility: hidden; 
+     
+    }
+}

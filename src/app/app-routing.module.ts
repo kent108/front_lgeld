@@ -9,6 +9,9 @@ import { PageAboutComponent } from './pages/page-about/page-about.component';
 import { PageSubscribeComponent } from './pages/page-subscribe/page-subscribe.component';
 import { PageInfoComponent } from './pages/page-info/page-info.component';
 import { PageAdminComponent } from './pages/page-admin/page-admin.component';
+import { ArticleEditComponent } from './components/article-edit/article-edit.component';
+import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
+import { AddArticleComponent } from './components/add-article/add-article.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -21,6 +24,9 @@ const routes: Routes = [
   { path: 'subscribe', component: PageSubscribeComponent },
   { path: 'info', component: PageInfoComponent },
   { path: 'admin', component: PageAdminComponent },
+  { path: 'article-edit/:id', component: ArticleEditComponent },
+  { path: 'article-detail/:id', component: ArticleDetailComponent },
+  { path: 'add-article', component: AddArticleComponent}
 ];
 
 @NgModule({

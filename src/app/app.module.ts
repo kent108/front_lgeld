@@ -22,6 +22,9 @@ import { AboutComponent } from './components/about/about.component';
 import { PageInfoComponent } from './pages/page-info/page-info.component';
 import { AdmintableComponent } from './components/admintable/admintable.component';
 import { PageAdminComponent } from './pages/page-admin/page-admin.component';
+import { ArticleEditComponent } from './components/article-edit/article-edit.component';
+import { AddArticleComponent } from './components/add-article/add-article.component';
+import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
 
 
 
@@ -46,6 +49,9 @@ import { PageAdminComponent } from './pages/page-admin/page-admin.component';
     PageInfoComponent,
     AdmintableComponent,
     PageAdminComponent,
+    ArticleEditComponent,
+    AddArticleComponent,
+    ArticleDetailComponent,
   ],
   imports: [
     BrowserModule,

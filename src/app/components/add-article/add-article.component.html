@@ -1,0 +1,93 @@
+<div class="flex flex-col max-w-2xl px-4 py-8 mx-auto p-6 space-y-8 sm:p-8 bg-transparent rounded-lg shadow-xl mb-10 mt-4">
+  <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
+    Ajout d'un article
+  </h2>
+  <form [formGroup]="articleForm" (ngSubmit)="submit()" action="#">
+    <div class="grid gap-4 mb-4 sm:grid-cols-2">
+      <div>
+        <label
+          for="name"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >Nom</label
+        >
+        <input
+          type="text"
+          name="name"
+          id="name"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-200 focus:border-red-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
+          placeholder=""
+          required=""
+          formControlName="name"
+          
+        />
+      </div>
+      <div>
+        <label
+          for="price"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >Prix</label
+        >
+        <input
+          type="number"
+          name="price"
+          id="price"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-200 focus:border-red-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
+          placeholder=""
+          required=""
+          formControlName="price"
+        />
+      </div>
+      <div>
+        <label
+          for="type"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >Type</label
+        >
+        <select
+          id="type"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-200 focus:border-red-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
+        formControlName="type_id"
+          >
+          <option value="1">Pâtisserie</option>
+          <option value="2">Traiteur</option>
+        </select>
+      </div>
+      <div>
+        <label
+          for="category"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >Format</label
+        >
+        <select
+          id="format_id"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-200 focus:border-red-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
+        formControlName="format_id"
+          >
+          <option value="1">Mignardise</option>
+          <option value="2">Individuel</option>
+          <option value="3">6 Personnes</option>
+        </select>
+      </div>
+      <div class="sm:col-span-2">
+        <label
+          for="description"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >Description</label
+        >
+        <textarea
+          id="description"
+          rows="4"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-200 focus:border-red-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
+          placeholder=""
+          formControlName="description"
+        ></textarea>
+      </div>
+    </div>
+    <button
+      type="submit"
+      class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-200 dark:hover:bg-green-700 dark:focus:ring-green-800"
+    >
+      Valider
+    </button>
+  </form>
+</div>

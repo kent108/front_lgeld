@@ -1,17 +1,33 @@
-.navbar{
-    background-color: transparent;
+.title {
+  color: #7a4c46;
 }
 
-.logo{
-    width: 110px;
+.navbar {
+  background-color: transparent;
 }
 
-@media (max-width: 480px){
-    .navbar{
-display: flex;
-flex-direction: row;
-flex-wrap: wrap;
-align-items: center;
-justify-content: center;
-    }
+.nav-link {
+  transition: transform 0.5s ease; /* Transition pour un effet en douceur */
+}
+
+.nav-link:hover {
+  transition-duration: 0.5s;
+}
+
+.logo {
+  width: 110px;
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
 }

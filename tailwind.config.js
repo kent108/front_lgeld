@@ -3,7 +3,15 @@ module.exports = {
   content: ["./src/**/*.{html,ts}", "./node_modules/flowbite/**/*.js"],
   darkMode: "class",
   theme: {
-    extend: {},
+    extend: {
+      // gridTemplateRows: {
+      //   "[auto,auto,1fr]": "auto auto 1fr",
+      // },
+    },
   },
-  plugins: [require("flowbite/plugin"), require("@tailwindcss/forms")],
+  plugins: [
+    require("flowbite/plugin"),
+    require("@tailwindcss/forms"),
+    // require("@tailwindcss/aspect-ratio"),
+  ],
 };

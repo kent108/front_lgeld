@@ -2,7 +2,7 @@ import { Type } from "./type";
 import { Picture } from "./picture";
 import { Format } from "./format";
 
-export interface Article { 
+export interface Article {
     id: number;
     name: string;
     description: string;
