@@ -74,4 +74,9 @@ export class AdmintableComponent {
       this.articles = this.articles.filter((article) => article.id !== id);
     });
   }
+
+
+
+
+  
 }

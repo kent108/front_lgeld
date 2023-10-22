@@ -3,7 +3,10 @@
     <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
       Mise à jour article
     </h2>
-    <form [formGroup]="articleForm" [formGroup]="priceForm" (ngSubmit)="onSubmit()">
+    <form
+      [formGroup]="articleForm"
+      (ngSubmit)="onSubmit()"
+    >
       <div class="grid gap-4 mb-4 sm:grid-cols-2 sm:gap-6 sm:mb-5">
         <div class="sm:col-span-2">
           <label
@@ -15,14 +18,13 @@
             formControlName="name"
             type="text"
             name="name"
-            id="name"
+            id=""
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-200 focus:border-red-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
-            value=""
             placeholder="Nom"
             required=""
           />
         </div>
-        
+
         <div class="w-full">
           <label
             for="price"
@@ -70,7 +72,12 @@
         </div>
       </div>
       <div class="flex items-center space-x-4">
-        <button type="submit" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Valider</button>
+        <button
+          type="submit"
+          class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+        >
+          Valider
+        </button>
       </div>
     </form>
   </div>

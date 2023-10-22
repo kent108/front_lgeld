@@ -12,11 +12,12 @@ import { PriceService } from 'src/app/services/price.service';
   styleUrls: ['./article-edit.component.css']
 })
 export class ArticleEditComponent {
+  
   article: Article | null = null;
-  price: Price | null = null;
+  // price: Price | null = null;
   
   constructor(
-    private fb: FormBuilder,
+    private formBuilder: FormBuilder,
     private articleService: ArticleService,
     private router: Router,
     private route: ActivatedRoute,
@@ -24,17 +25,16 @@ export class ArticleEditComponent {
 
   ) { }
 
-  articleForm: FormGroup = this.fb.group({
-    id: [''],
+  articleForm: FormGroup = this.formBuilder.group({
     name: [''],
     description: [''],
-    price: [''],
-    picture_id: [''],
+    // picture_id: [''],
     type_id: [''],
+    price: [''],
     format_id: [''],
   });
 
-  priceForm: FormGroup = this.fb.group({
+  priceForm: FormGroup = this.formBuilder.group({
     id: [''],
     article_id: [''],
     format_id: [''],
@@ -51,32 +51,54 @@ export class ArticleEditComponent {
     });
   }
 
-  onSubmit(): void {
-    if (this.articleForm.valid && this.article) {
-      const updatedArticle: Article = {
-        ...this.article,
-        ...this.articleForm.value,
-      };
-      this.articleService.updateArticle(updatedArticle).subscribe((article) => {
-        this.router.navigate(['articles']);
-      });
+  // onSubmit(): void {
+  //   if (this.articleForm.valid && this.article) {
+  //     const updatedArticle: Article = {
+  //       ...this.article,
+  //       ...this.articleForm.value,
+  //     };
+  //     this.articleService.updateArticle(updatedArticle).subscribe((article) => {
+  //       console.log(article);
+        
+  //       this.router.navigate(['articles']);
+  //     });
 
       
 
-    }
-    if (this.priceForm.valid && this.price) {
-      const updatedPrice: Price = {
-        ...this.price,
-        ...this.priceForm.value,
-      };
-      this.priceService.updatePrice(updatedPrice).subscribe((price) => {
-        this.router.navigate(['articles']);
-      })
+  //   }
+  //   if (this.priceForm.valid && this.price) {
+  //     const updatedPrice: Price = {
+  //       ...this.price,
+  //       ...this.priceForm.value,
+  //     };
+  //     this.priceService.updatePrice(updatedPrice).subscribe((price) => {
+  //       this.router.navigate(['articles']);
+  //     })
 
-    }
+  //   }
 
 
   
+  // }
+
+
+  onSubmit() {
+    const updateArticle: Article = this.articleForm.value;
+    const test = this.articleForm.value.price;
+    updateArticle.type_id = Number(updateArticle.type_id);
+    const test2 = Number(this.articleForm.value.format_id);
+
+    this.articleService.updateArticle(updateArticle).subscribe((response) => {
+      this.articleForm.patchValue({
+        name: response.name,
+        description: response.description,
+        type_id: response.type_id,
+        price: test,
+        format_id: test2,
+      });
+    });
   }
+
+
 }
 
