@@ -10,7 +10,9 @@ import { ArticleService } from 'src/app/services/article.service';
 export class PageTraiteurComponent {
   traiteurArticles: Article[] = [];
 
-  constructor(private articleService: ArticleService) { }
+  constructor(
+    private articleService: ArticleService
+  ) { }
 
   ngOnInit(): void {
     this.articleService

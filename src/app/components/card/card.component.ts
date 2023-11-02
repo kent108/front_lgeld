@@ -28,7 +28,7 @@ export class CardComponent {
 
   ngOnInit() {
     if (this.article) {
-      this.pictureService.getPictureById(this.article.id).subscribe({
+      this.pictureService.getPictureById(this.article.picture_id).subscribe({
         next: (data: Blob) => {
           console.log(data);
           
