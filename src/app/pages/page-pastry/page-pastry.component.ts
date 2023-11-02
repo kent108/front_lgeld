@@ -8,7 +8,7 @@ import { ArticleService } from 'src/app/services/article.service';
   styleUrls: ['./page-pastry.component.css']
 })
 export class PagePastryComponent implements OnInit {
-  pastryArticles: Article[] = [];
+  pastryArticles!: Article[];
 
   constructor(
     private articleService: ArticleService
@@ -19,6 +19,9 @@ export class PagePastryComponent implements OnInit {
       .getArticlesByTypes('Pâtisserie')
       .subscribe((articles) => {
         this.pastryArticles = articles;
+        console.log(this.pastryArticles);
+        
       });
+    
   }
 }

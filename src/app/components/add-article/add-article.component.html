@@ -82,6 +82,24 @@
           formControlName="description"
         ></textarea>
       </div>
+      <div>
+        <label
+          for="picture"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >Image</label
+        >
+        <input
+        (change)="onFileChange($event)"
+          type="file"
+          name="picture"
+          id="picture"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-200 focus:border-red-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
+          placeholder=""
+          required=""
+          formControlName="picture"
+          
+        />
+      </div>
     </div>
     <button
       type="submit"

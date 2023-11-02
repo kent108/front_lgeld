@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Modal } from 'flowbite';
 import { Token } from 'src/app/models/token';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
