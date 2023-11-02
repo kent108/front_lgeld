@@ -34,14 +34,11 @@ export class ArticleEditComponent {
     format_id: [''],
   });
 
-  priceForm: FormGroup = this.formBuilder.group({
-    id: [''],
-    article_id: [''],
-    format_id: [''],
-    price: [''],
-  });
+ 
 
   ngOnInit(): void {
+    
+
     this.route.params.subscribe((params) => {
       const id = params['id'];
       this.articleService.getArticleById(id).subscribe((article) => {
@@ -83,20 +80,32 @@ export class ArticleEditComponent {
 
 
   onSubmit() {
-    const updateArticle: Article = this.articleForm.value;
-    const test = this.articleForm.value.price;
-    updateArticle.type_id = Number(updateArticle.type_id);
-    const test2 = Number(this.articleForm.value.format_id);
+    // const updateArticle: Article = this.articleForm.value;
+    // const test = this.articleForm.value.price;
+    // updateArticle.type_id = Number(updateArticle.type_id);
+    // const test2 = Number(this.articleForm.value.format_id);
 
-    this.articleService.updateArticle(updateArticle).subscribe((response) => {
-      this.articleForm.patchValue({
-        name: response.name,
-        description: response.description,
-        type_id: response.type_id,
-        price: test,
-        format_id: test2,
-      });
-    });
+    // this.articleService.updateArticle(updateArticle).subscribe((response) => {
+    //   this.articleForm.patchValue({
+    //     name: response.name,
+    //     description: response.description,
+    //     type_id: response.type_id,
+    //     price: test,
+    //     format_id: test2,
+    //   });
+    // });
+
+    if (this.articleForm.valid && this.article) {
+      const updatedArticle: Article = {
+        ...this.article,
+        ...this.articleForm.value,
+      };
+      this.articleService.updateArticle(updatedArticle).subscribe(() => {
+        console.log(updatedArticle, "article mis à jour");
+        this.router.navigate(['/admin'])
+        
+      })
+    }
   }
 
 

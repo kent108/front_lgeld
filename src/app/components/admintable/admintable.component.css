@@ -9,7 +9,7 @@
   margin-right: 10px;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 400px) {
  
 
   .admintable {
@@ -17,6 +17,7 @@
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
     max-width:100%;
   }
 

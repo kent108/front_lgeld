@@ -3,6 +3,7 @@ import { Picture } from "./picture";
 import { Format } from "./format";
 
 export interface Article {
+    price: string | Type;
     id: number;
     name: string;
     description: string;

@@ -5,6 +5,7 @@ import { Article } from 'src/app/models/article';
 import { Type } from 'src/app/models/type';
 import { ArticleService } from 'src/app/services/article.service';
 import { PriceService } from 'src/app/services/price.service';
+import { TypeService } from 'src/app/services/type.service';
 
 @Component({
   selector: 'app-add-article',
@@ -12,12 +13,15 @@ import { PriceService } from 'src/app/services/price.service';
   styleUrls: ['./add-article.component.css']
 })
 export class AddArticleComponent {
+  allTypes: Type[] = [];
+
   constructor(
     private formBuilder: FormBuilder,
     private articleService: ArticleService,
     private router: Router,
     private route: ActivatedRoute,
-    private price: PriceService
+    private price: PriceService,
+   private typeService: TypeService
   ) { }
 
   articleForm: FormGroup = this.formBuilder.group({
@@ -29,18 +33,9 @@ export class AddArticleComponent {
     format_id: [''],
   });
 
-  getSelectedType(): Type[] {
-    const formValues = this.articleForm.value;
-    const type = formValues.type;
 
-    if (formValues.pastry) {
-      type.push({ id: 1, descripiton: "Pâtisserie" })
-    }
-    if (formValues.traiteur) {
-      type.push({ id: 2, descripiton: "Traiteur" })
-    }
-
-    return type;
+  ngOnInit(): void { 
+    this.typeService.getTypes().subscribe((types)=>{this.allTypes = types})
   }
 
   submit() {
