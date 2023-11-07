@@ -1,10 +1,17 @@
 
 
-<div class="bg-transparent" *ngIf="article">
+<div class="bg-transparent" *ngIf="article && price">
   <div class="pt-6">
     
     <!-- Image gallery -->
-    <div class="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
+
+      
+        <div class="flex justify-center">
+            <img class="w-4/12 rounded-lg" [src]='imageToShow' alt="">
+        </div>   
+
+
+    <!-- <div class="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
       <div class="aspect-h-4 aspect-w-3 hidden overflow-hidden rounded-lg lg:block">
         <img src="\assets\06.jpg" alt="Two each of gray, white, and black shirts laying flat." class="h-full w-full object-cover object-center">
       </div>
@@ -19,7 +26,7 @@
       <div class="aspect-h-5 aspect-w-4 lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg">
         <img src="\assets\06.jpg" alt="Model wearing plain white basic tee." class="h-full w-full object-cover object-center">
       </div>
-    </div>
+    </div> -->
 
     <!-- Product info -->
     <div class="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pb-24 lg:pt-16">
@@ -30,7 +37,11 @@
       <!-- Options -->
       <div class="mt-4 lg:row-span-3 lg:mt-0">
         <h2 class="sr-only"></h2>
-        <p class="text-3xl tracking-tight text-gray-900">$</p>
+        <p class="text-3xl tracking-tight text-gray-900">{{price.price}} €</p>
+
+         <button class="button mt-6" role="button" (click)="addToCart(article)">
+    Ajouter au panier
+  </button>
 
         <!-- <form class="mt-10"> -->
           <!-- Colors -->
@@ -172,12 +183,16 @@
       <div class="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6">
         <!-- Description and details -->
         <div>
-          <h3 class="sr-only">{{article.description}}</h3>
-
           <div class="space-y-6">
             <p class="text-base text-gray-900">{{article.description}}</p>
           </div>
         </div>
+
+
+
+
+
+        
 
         <!-- <div class="mt-10">
           <h3 class="text-sm font-medium text-gray-900">Highlights</h3>

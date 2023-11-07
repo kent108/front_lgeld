@@ -8,6 +8,12 @@ module.exports = {
       //   "[auto,auto,1fr]": "auto auto 1fr",
       // },
     },
+    screens: {
+      sm: "480px",
+      md: "768px",
+      lg: "976px",
+      xl: "1440px",
+    },
   },
   plugins: [
     require("flowbite/plugin"),

@@ -10,7 +10,7 @@ export class ArticleListComponent {
   @Input() tabArticles!: Article[];
 
   ngOnInit() {
-   console.log(this.tabArticles);
+ 
    
  } 
 }

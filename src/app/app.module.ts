@@ -26,6 +26,8 @@ import { ArticleEditComponent } from './components/article-edit/article-edit.com
 import { AddArticleComponent } from './components/add-article/add-article.component';
 import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
 import { ArticleListComponent } from './components/article-list/article-list.component';
+import { CartComponent } from './components/cart/cart.component';
+
 
 
 
@@ -54,6 +56,7 @@ import { ArticleListComponent } from './components/article-list/article-list.com
     AddArticleComponent,
     ArticleDetailComponent,
     ArticleListComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,

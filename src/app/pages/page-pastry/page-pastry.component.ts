@@ -19,7 +19,7 @@ export class PagePastryComponent implements OnInit {
       .getArticlesByTypes('Pâtisserie')
       .subscribe((articles) => {
         this.pastryArticles = articles;
-        console.log(this.pastryArticles);
+        
         
       });
     

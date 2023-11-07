@@ -1,4 +1,10 @@
 .card{
     width: 331px;
+    height: auto;
     margin-bottom: 50px;
+}
+
+.image{
+    height: auto;
+    width: auto;
 }

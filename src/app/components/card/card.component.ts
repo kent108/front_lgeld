@@ -3,6 +3,7 @@ import { Article } from 'src/app/models/article';
 import { Format } from 'src/app/models/format';
 import { Type } from 'src/app/models/type';
 import { ArticleService } from 'src/app/services/article.service';
+import { FormatService } from 'src/app/services/format.service';
 import { pictureService } from 'src/app/services/picture.service';
 
 @Component({
@@ -16,30 +17,28 @@ export class CardComponent {
 
   @Input()
   tabArticles: Article[] = [];
-  formats: Format[] = [];
   types: Type[] = [];
 
   @Input() article!: Article;
+  @Input() formats!: Format;
 
   constructor(
     private articleService: ArticleService,
-    private pictureService: pictureService
+    private pictureService: pictureService,
+    private formatService: FormatService
   ) {}
 
   ngOnInit() {
     if (this.article) {
       this.pictureService.getPictureById(this.article.picture_id).subscribe({
         next: (data: Blob) => {
-          console.log(data);
-          
-        this.createImageFromBlob(data);
-      },
-      error: (error) => {
-        console.log(error);
-      },
-    });
+          this.createImageFromBlob(data);
+        },
+        error: (error) => {
+          console.log(error);
+        },
+      });
     }
-    
   }
 
   createImageFromBlob(image: Blob) {
@@ -47,8 +46,6 @@ export class CardComponent {
     reader.readAsDataURL(image);
     reader.addEventListener('load', () => {
       this.imageToShow = reader.result;
-      console.log(this.imageToShow);
-      
     });
   }
 }

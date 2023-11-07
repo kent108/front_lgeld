@@ -3,9 +3,11 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Article } from 'src/app/models/article';
+import { Format } from 'src/app/models/format';
 import { Picture } from 'src/app/models/picture';
 import { Type } from 'src/app/models/type';
 import { ArticleService } from 'src/app/services/article.service';
+import { FormatService } from 'src/app/services/format.service';
 import { pictureService } from 'src/app/services/picture.service';
 import { PriceService } from 'src/app/services/price.service';
 import { TypeService } from 'src/app/services/type.service';
@@ -17,11 +19,14 @@ import { TypeService } from 'src/app/services/type.service';
 })
 export class AddArticleComponent {
   allTypes: Type[] = [];
+  allFormats: Format[] = [];
   subImage$!: Observable<any>;
   title = 'upload_image_front';
   imageToShow: any;
   isImageLoading!: boolean;
   myFile!: File;
+
+  caseCochee = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -30,7 +35,8 @@ export class AddArticleComponent {
     private route: ActivatedRoute,
     private price: PriceService,
     private typeService: TypeService,
-    private pictureService: pictureService
+    private pictureService: pictureService,
+    private formatService: FormatService,
   ) {}
 
   articleForm: FormGroup = this.formBuilder.group({
@@ -48,13 +54,16 @@ export class AddArticleComponent {
       this.allTypes = types;
     });
    
+    this.formatService.getFormats().subscribe((formats) => {
+      this.allFormats = formats;
+    });
   }
 
   submit() {
     const newArticle: Article = this.articleForm.value;
     const test = this.articleForm.value.price;
     newArticle.type_id = Number(newArticle.type_id);
-    const jeTyperaiMieuxLaProchaineFois = Number(
+    const format = Number(
       this.articleForm.value.format_id
     );
 
@@ -63,17 +72,16 @@ export class AddArticleComponent {
       formData.append('monFichierKey', this.myFile);
 
       this.pictureService.postPicture(formData).subscribe((res) => {
-        console.log(res, 'res');
-        console.log(res.id);
+        
 
         newArticle.picture_id = res.id;
-        console.log(newArticle, 'newArticle');
+        // console.log(newArticle, 'newArticle');
 
         this.articleService.createArticle(newArticle).subscribe((response) => {
                   this.price
             .createPrice({
               article_id: response.id,
-              format_id: jeTyperaiMieuxLaProchaineFois,
+              format_id: format,
               price: test,
             })
             .subscribe((response) => {});
@@ -85,7 +93,7 @@ export class AddArticleComponent {
         alert('Article ajouté');
       });
     }
-    console.log(newArticle);
+    // console.log(newArticle);
   }
 
 

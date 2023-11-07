@@ -1,9 +1,9 @@
 import { Type } from "./type";
 import { Picture } from "./picture";
 import { Format } from "./format";
+import { Price } from "./price";
 
 export interface Article {
-    price: string | Type;
     id: number;
     name: string;
     description: string;
@@ -12,4 +12,5 @@ export interface Article {
     formats: Format[];
     picture: Picture;
     type : Type
+    price: Price ;
 }

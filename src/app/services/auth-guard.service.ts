@@ -6,7 +6,8 @@ import { Observable, catchError, map, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthGuardService {
-  private readonly apiUrl = 'http://localhost:3000/api/auth/checktoken';
+  private readonly apiUrl = 'http://localhost:3000/api/auth';
+  
 
 
   constructor(private http: HttpClient) { }
