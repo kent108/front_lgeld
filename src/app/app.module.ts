@@ -27,6 +27,7 @@ import { AddArticleComponent } from './components/add-article/add-article.compon
 import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
 import { ArticleListComponent } from './components/article-list/article-list.component';
 import { CartComponent } from './components/cart/cart.component';
+import { PageConditionComponent } from './pages/page-condition/page-condition.component';
 
 
 
@@ -57,6 +58,7 @@ import { CartComponent } from './components/cart/cart.component';
     ArticleDetailComponent,
     ArticleListComponent,
     CartComponent,
+    PageConditionComponent,
   ],
   imports: [
     BrowserModule,

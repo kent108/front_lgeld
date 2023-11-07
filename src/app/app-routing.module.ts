@@ -13,6 +13,7 @@ import { ArticleEditComponent } from './components/article-edit/article-edit.com
 import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
 import { AddArticleComponent } from './components/add-article/add-article.component';
 import { CartComponent } from './components/cart/cart.component';
+import { PageConditionComponent } from './pages/page-condition/page-condition.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -28,7 +29,8 @@ const routes: Routes = [
   { path: 'article-edit/:id', component: ArticleEditComponent },
   { path: 'article-detail/:id', component: ArticleDetailComponent },
   { path: 'add-article', component: AddArticleComponent },
-  { path: 'cart', component: CartComponent},
+  { path: 'cart', component: CartComponent },
+  { path: 'condition', component : PageConditionComponent},
 ];
 
 @NgModule({
