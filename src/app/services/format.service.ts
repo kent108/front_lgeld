@@ -10,7 +10,7 @@ export class FormatService {
 
   constructor(private http: HttpClient) { }
   
-  getFormats() { 
+  getAllFormats() { 
     return this.http.get<Format[]>(this.url);
   }
 

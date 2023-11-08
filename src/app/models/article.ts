@@ -12,5 +12,5 @@ export interface Article {
     formats: Format[];
     picture: Picture;
     type : Type
-    price: Price ;
+    prices: Price[] ;
 }

@@ -1,4 +1,4 @@
-<section class="bg-white dark:bg-gray-900">
+<section class="bg-transparent dark:bg-gray-900">
   <div class="max-w-2xl px-4 py-8 mx-auto lg:py-16">
     <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
       Mise à jour article
@@ -43,20 +43,27 @@
           />
         </div>
         <div>
-          <label
-            for="category"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >Format</label
-          >
-          <select
-            id="Format"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-200 focus:border-red-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
-          >
-            <option selected="">Mignardise</option>
-            <option value="Individuel">Individuel</option>
-            <option value="6 Personnes">6 Personnes</option>
-          </select>
+        <h3 class="mb-4 font-semibold text-gray-900 dark:text-white">
+          Formats
+        </h3>
+        <div 
+          class=""          >
+          <div *ngFor="let format of allFormats" class="flex items-center mt-4">
+            <input
+            formControlName="format_id"
+              id="{{format.size}}"
+              type="checkbox"
+              value="{{format.id}}"
+              class="mt- w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+            />
+            <label
+            class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              for="{{format.size}}"
+              >{{format.size}}</label
+            >
+          </div>
         </div>
+      </div>
         <div class="sm:col-span-2">
           <label
             for="description"

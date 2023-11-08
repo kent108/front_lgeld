@@ -13,21 +13,22 @@ import { pictureService } from 'src/app/services/picture.service';
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent {
+  totalPrice: number = 0;
   items = this.cartService.getItems();
+  @Input() article!: Article;
 
- 
-
-  constructor(
-    
-    private cartService: CartService,
-    
-  ) {}
+  constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
+    this.items = this.cartService.getItems();
+    console.log(this.items);
+   
   }
-  
+
   clearCart() {
     this.items = this.cartService.clearCart();
   }
 
+
+  
 }

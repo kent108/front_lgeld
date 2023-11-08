@@ -10,9 +10,6 @@
   transition: transform 0.5s ease; /* Transition pour un effet en douceur */
 }
 
-.nav-link:hover {
-  transition-duration: 0.5s;
-}
 
 .logo {
   width: 110px;

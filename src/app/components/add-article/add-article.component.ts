@@ -54,7 +54,7 @@ export class AddArticleComponent {
       this.allTypes = types;
     });
    
-    this.formatService.getFormats().subscribe((formats) => {
+    this.formatService.getAllFormats().subscribe((formats) => {
       this.allFormats = formats;
     });
   }

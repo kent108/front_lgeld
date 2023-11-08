@@ -26,6 +26,16 @@ export class PriceService {
     );
   }
 
+  getPricebyFormat(formatId: number): Observable<Price[]> {
+    const body = {
+      format_id: formatId,
+    }
+    return this.http.post<Price[]>(
+      'http://localhost:3000/api/prices/format',
+      body
+    );
+  }
+
   updatePrice(price: Price): Observable<Price> {
     return this.http.put<Price>(this.url, price);
   }

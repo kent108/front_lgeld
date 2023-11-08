@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Token } from 'src/app/models/token';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
+import { AuthGuardService } from 'src/app/services/auth-guard.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-page-connect',
@@ -14,8 +16,11 @@ export class PageConnectComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private userService: UserService
+    private userService: UserService,
+    private AuthGuardService: AuthGuardService,
+    private router: Router
   ) {
+
     this.loginForm = this.formBuilder.group({
       mail: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
@@ -46,6 +51,14 @@ export class PageConnectComponent {
           // defaultModal.show();
 
           // console.log('Token:', token);
+
+          // si utilisateur est admin
+          // const isAdmin = res.user.;
+          // localStorage.setItem('admin', isAdmin);
+          // if (isAdmin) {
+          //   this.AuthGuardService.isAdmin$.next(localStorage.getItem('admin'));
+          //   // this.router.navigate(['/admin']);
+          // }
         },
         (error) => {
           // const errorModalElement = document.getElementById(

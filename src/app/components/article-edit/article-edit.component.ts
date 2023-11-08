@@ -2,28 +2,31 @@ import { Component } from '@angular/core';
 import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Article } from 'src/app/models/article';
+import { Format } from 'src/app/models/format';
 import { Price } from 'src/app/models/price';
 import { ArticleService } from 'src/app/services/article.service';
+import { FormatService } from 'src/app/services/format.service';
 import { PriceService } from 'src/app/services/price.service';
 
 @Component({
   selector: 'app-article-edit',
   templateUrl: './article-edit.component.html',
-  styleUrls: ['./article-edit.component.css']
+  styleUrls: ['./article-edit.component.css'],
 })
 export class ArticleEditComponent {
-  
+  allFormats: Format[] = [];
+
   article: Article | null = null;
   // price: Price | null = null;
-  
+
   constructor(
     private formBuilder: FormBuilder,
     private articleService: ArticleService,
     private router: Router,
     private route: ActivatedRoute,
-    private priceService: PriceService
-
-  ) { }
+    private priceService: PriceService,
+    private formatService: FormatService
+  ) {}
 
   articleForm: FormGroup = this.formBuilder.group({
     name: [''],
@@ -34,17 +37,17 @@ export class ArticleEditComponent {
     format_id: [''],
   });
 
- 
-
   ngOnInit(): void {
-    
-
     this.route.params.subscribe((params) => {
       const id = params['id'];
       this.articleService.getArticleById(id).subscribe((article) => {
         this.article = article;
         this.articleForm.patchValue(article);
       });
+    });
+
+    this.formatService.getAllFormats().subscribe((formats) => {
+      this.allFormats = formats;
     });
   }
 
@@ -56,11 +59,9 @@ export class ArticleEditComponent {
   //     };
   //     this.articleService.updateArticle(updatedArticle).subscribe((article) => {
   //       console.log(article);
-        
+
   //       this.router.navigate(['articles']);
   //     });
-
-      
 
   //   }
   //   if (this.priceForm.valid && this.price) {
@@ -74,10 +75,7 @@ export class ArticleEditComponent {
 
   //   }
 
-
-  
   // }
-
 
   onSubmit() {
     // const updateArticle: Article = this.articleForm.value;
@@ -101,13 +99,10 @@ export class ArticleEditComponent {
         ...this.articleForm.value,
       };
       this.articleService.updateArticle(updatedArticle).subscribe(() => {
-        console.log(updatedArticle, "article mis à jour");
-        this.router.navigate(['/admin'])
-        
-      })
+        console.log(updatedArticle, 'article mis à jour');
+        this.router.navigate(['/admin']);
+      });
     }
   }
-
-
 }
 

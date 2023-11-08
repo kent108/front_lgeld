@@ -1,13 +1,13 @@
 <div class="container mx-auto px-4 py-8 cart-item bg-white rounded-lg shadow-md">
     <div class="flex flex-col md:flex-row md:justify-between md:items-center">
-        <h1 class="text-2xl font-bold my-4">Panier</h1>
+        <h1 class="text-2xl font-bold my-4">DEVIS</h1>
         <button class="button-devis">
       Demande de devis
     </button>
     </div>
     <div class="mt-8">
-        <div class="flex flex-col md:flex-row border-b border-gray-400 py-4" *ngFor="let item of items" >
-            <div class="mt-4 md:mt-0 md:ml-6">
+        <ng-container *ngFor="let item of items" class="flex flex-col md:flex-row border-b border-gray-400 py-4" > 
+            <div class="mt-4 md:mt-0 md:ml-6" *ngFor="let price of item.prices" >
                 <h2 class="text-lg font-bold">{{item.name}}</h2>
                 <p class="mt-2 text-gray-600">{{item.description}}</p>
                 <div class="mt-4 flex items-center">
@@ -17,16 +17,16 @@
                         <span class="mx-2 text-gray-600">1</span>
                         <button class="bg-gray-200 rounded-r-lg px-2 py-1" >+</button>
                     </div>
-                    <span class="ml-auto font-bold">{{item.price}}</span>
+                    <span class="ml-auto font-bold">{{price.price}}</span>
                 </div>
             </div>
-        </div>
+        </ng-container>
+        
     <div class="flex justify-end items-center mt-8">
         <span class="text-gray-600 mr-4">Total:</span>
-        <span class="text-xl font-bold mr-4">$35.00</span>
+        <span class="text-xl font-bold mr-4">10</span>
         <button class="button-devis" (click)="clearCart()">
          Vider mon panier
        </button>
     </div>
-
 </div>

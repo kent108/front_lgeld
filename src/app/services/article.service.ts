@@ -23,6 +23,10 @@ export class ArticleService {
     return this.http.get<Article[]>('http://localhost:3000/api/articles/types/' + type);
   }
 
+  getArticlesByFormat(format: string): Observable<Article[]> {
+    return this.http.get<Article[]>('http://localhost:3000/api/articles/formats/' + format);
+  }
+
   updateArticle( updateArticle: Article): Observable<Article> {
     return this.http.patch<Article>(`${this.url}/${updateArticle.id}`, updateArticle);
   }
