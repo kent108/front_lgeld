@@ -56,6 +56,7 @@ export class ArticleEditComponent {
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       const id = params['id'];
+      this.articleIdFromRoute = Number(id);
       this.articleService.getArticleById(id).subscribe((article) => {
         this.article = article;
         if (this.article) {
