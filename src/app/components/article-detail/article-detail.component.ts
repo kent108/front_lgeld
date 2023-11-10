@@ -8,6 +8,8 @@ import { pictureService } from 'src/app/services/picture.service';
 import { CartService } from 'src/app/services/cart.service';
 import { FormatService } from 'src/app/services/format.service';
 import { Format } from 'src/app/models/format';
+import { FormsModule } from '@angular/forms';
+// import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-article-detail',
@@ -15,11 +17,13 @@ import { Format } from 'src/app/models/format';
   styleUrls: ['./article-detail.component.css'],
 })
 export class ArticleDetailComponent {
-  @Input() article!: Article;
+  @Input()
+  article!: Article;
+  articleToCart!: Article;
+  selectedFormat: Format | undefined;
   price!: Price;
   prices!: Price[];
   picture!: Blob;
-
   @Input()
   imageToShow: any;
   isImageLoading!: boolean;
@@ -30,7 +34,8 @@ export class ArticleDetailComponent {
     private priceService: PriceService,
     private pictureService: pictureService,
     private cartService: CartService,
-    private formatService: FormatService
+    private formatService: FormatService,
+    private FormsModule: FormsModule
   ) {}
 
   ngOnInit(): void {
@@ -58,20 +63,62 @@ export class ArticleDetailComponent {
         }
       });
 
-    // this.priceService
-    //   .getPriceByIds(articleIdfromRoute, 1)
-    //   .subscribe((price) => {
-    //     this.price = price;
-    //     this.article.prices.push(this.price);
-       
+    this.priceService
+      .getPriceByIds(articleIdfromRoute, 1)
+      .subscribe((price) => {
+        this.price = price;
+        // this.article.prices.push(this.price);
+      });
 
+    // const articleIdfromRoute = Number(this.route.snapshot.paramMap.get('id'));
+
+    // this.articleService
+    //   .getArticleById(articleIdfromRoute)
+    //   .subscribe((article) => {
+    //     this.article = article;
+
+    //     if (this.article) {
+    //       this.formatService.getFormatsByArticleId(this.article.id).subscribe(
+    //         (formats) => {
+    //           console.log('Formats dans le composant:', formats);
+    //           this.article.formats = formats;
+    //         },
+    //         (error) => {
+    //           console.error(
+    //             'Erreur lors de la récupération des formats:',
+    //             error
+    //           );
+    //         }
+    //       );
+
+    //       this.pictureService
+    //         .getPictureById(this.article.picture_id)
+    //         .subscribe({
+    //           next: (data: Blob) => {
+    //             this.createImageFromBlob(data);
+    //           },
+    //           error: (error) => {
+    //             console.log(error);
+    //           },
+    //         });
+    //     }
     //   });
   }
 
+  articleToLocalStorage(articleId: number, formatId: number) {
+    console.log(formatId);
+    
+    this.articleService.getArticleById(articleId).subscribe((article) => { 
+      this.articleToCart = article;
+      console.log(this.articleToCart);
+      
+    });
+  }
+
   // Fonction pour ajouter un article
-  addToCart(article: Article) {
-    this.cartService.addToCart(article);
-    window.alert('Votre produit a été ajouté au panier!');
+  addToCart(): void {
+    this.cartService.addToCart(this.article);
+    alert('Article ajouté au panier');
   }
 
   // Reception de l'image pas le blob
@@ -83,3 +130,5 @@ export class ArticleDetailComponent {
     });
   }
 }
+
+

@@ -22,8 +22,7 @@ export class AdmintableComponent {
   types: Type[] = [];
   formats: Format[] = [];
   prices: Price[] = [];
-
-  articlesAvecDoublon: any[] = [];
+  // articlesAvecDoublon: any[] = [];
 
   constructor(
     private articleService: ArticleService,
@@ -41,27 +40,6 @@ export class AdmintableComponent {
     this.articleService.getAllArticles().subscribe((formats) => {
       this.articles = formats;
       console.log(this.articles);
-
-      // for (let i = 0; i < this.formats.length; i++) {
-      //   for (let j = 0; j < this.articles[i].formats.length; j++) {
-      //     this.priceService
-      //       .getPriceByIds(this.articles[i].id, this.articles[i].formats[j].id)
-      //       .subscribe((prix) => {
-      //         this.articlesAvecDoublon.push({
-      //           id: this.articles[i].id,
-      //           name: this.articles[i].name,
-      //           description: this.articles[i].description,
-      //           picture_id: this.articles[i].picture_id,
-      //           formats: this.articles[i].formats[j],
-      //           picture: this.articles[i].picture,
-      //           type: this.articles[i].type,
-      //           prix: prix.price,
-      //         });
-      //       });       
-          
-      //   }
-      // }
-      
     });
   }
 
@@ -73,10 +51,24 @@ export class AdmintableComponent {
     this.router.navigate(['/add-article']);
   }
 
-  deleteArticle(id: number): void {
-    this.articleService.deleteArticle(id).subscribe(() => {
-      this.articles = this.articles.filter((article) => article.id !== id);
-    });
+  // deleteArticle(id: number): void {
+  //   this.articleService.deletePriceById(id).subscribe(() => {
+  //      console.log('Suppression réussie');
+  //     this.articles = this.articles.filter((article) => article.id !== id);
+  //   });
+  // }
+
+  deleteArticleByPrice(price: number): void {
+    this.articleService.deleteArticleByPrice(price).subscribe(
+      (response) => {
+        console.log(response, 'Suppression réussie');
+        // Refresh the list of articles or handle the response as needed
+      },
+      (error) => {
+        console.error(error, 'Suppression échouée');
+        // Handle the error as needed
+      }
+    );
   }
 
   toggleModal() {

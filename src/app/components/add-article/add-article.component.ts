@@ -36,7 +36,7 @@ export class AddArticleComponent {
     private price: PriceService,
     private typeService: TypeService,
     private pictureService: pictureService,
-    private formatService: FormatService,
+    private formatService: FormatService
   ) {}
 
   articleForm: FormGroup = this.formBuilder.group({
@@ -53,7 +53,7 @@ export class AddArticleComponent {
     this.typeService.getTypes().subscribe((types) => {
       this.allTypes = types;
     });
-   
+
     this.formatService.getAllFormats().subscribe((formats) => {
       this.allFormats = formats;
     });
@@ -63,28 +63,25 @@ export class AddArticleComponent {
     const newArticle: Article = this.articleForm.value;
     const test = this.articleForm.value.price;
     newArticle.type_id = Number(newArticle.type_id);
-    const format = Number(
-      this.articleForm.value.format_id
-    );
+    const format = Number(this.articleForm.value.format_id);
 
     if (this.myFile) {
       const formData = new FormData();
       formData.append('monFichierKey', this.myFile);
 
       this.pictureService.postPicture(formData).subscribe((res) => {
-        
-
         newArticle.picture_id = res.id;
-        // console.log(newArticle, 'newArticle');
+        console.log(newArticle, 'newArticle');
 
         this.articleService.createArticle(newArticle).subscribe((response) => {
-                  this.price
+          this.price
             .createPrice({
               article_id: response.id,
               format_id: format,
               price: test,
             })
-            .subscribe((response) => {});
+            .subscribe((response) => { console.log(response, 'response');
+            });
 
           console.log('Article ajouté');
           this.articleForm.reset();
@@ -93,13 +90,46 @@ export class AddArticleComponent {
         alert('Article ajouté');
       });
     }
-    // console.log(newArticle);
+    console.log(newArticle);
   }
 
+  // submit() {
+  //   const newArticle: Article = this.articleForm.value;
+  //   newArticle.type_id = Number(newArticle.type_id);
+  //   const formatId = Number(this.articleForm.value.format_id);
+  //   const priceValue = Number(this.articleForm.value.price);
+
+  //   if (this.myFile) {
+  //     const formData = new FormData();
+  //     formData.append('monFichierKey', this.myFile);
+
+  //     this.pictureService.postPicture(formData).subscribe((res) => {
+  //       newArticle.picture_id = res.id;
+
+  //       this.articleService.createArticle(newArticle).subscribe((response) => {
+  //         console.log(response, 'response');
+  //         // Créer un prix en fonction du format sélectionné
+  //         this.price
+  //           .createPrice({
+  //             article_id: response.picture_id,
+  //             format_id: formatId,
+  //             price: priceValue,
+  //           })
+  //           .subscribe((response) => {});
+  //           console.log('Article et prix ajoutés avec succès');
+  //           this.articleForm.reset();
+  //         });
+
+  //       alert('Article ajouté avec succès');
+  //     });
+  //   }
+  // }
 
   onFileChange(e: any) {
     console.log(e.target.files, 'e.target.files');
     this.myFile = e.target.files[0];
     console.log(this.myFile, 'this.myFile');
   }
+
+  
 }

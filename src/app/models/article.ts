@@ -9,8 +9,15 @@ export interface Article {
     description: string;
     picture_id: number;
     type_id: number;
-    formats: Format[];
+    format : Format;
     picture: Picture;
     type : Type
     prices: Price[] ;
+}
+
+export interface ArticleToSend {
+    name: string;
+    description: string;
+    picture_id: number;
+    type_id: number;
 }
