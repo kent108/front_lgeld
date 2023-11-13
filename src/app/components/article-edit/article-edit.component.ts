@@ -77,10 +77,10 @@ export class ArticleEditComponent {
     });
 
     // Récupération des paramètres de l'URL
-    const routeParam = this.route.snapshot.paramMap;
+    //const routeParam = this.route.snapshot.paramMap;
     // this.articleIdFromRoute = Number(routeParam.get('id'));
-    this.formatIdFromRoute = Number(routeParam.get('id'));
-    this.pictureIdFromRoute = Number(routeParam.get('id'));
+    //this.formatIdFromRoute = Number(routeParam.get('id'));
+    //this.pictureIdFromRoute = Number(routeParam.get('id'));
 
     // Récupération du format
     this.formatService.getAllFormats().subscribe((formats) => {

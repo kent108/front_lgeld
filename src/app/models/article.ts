@@ -1,7 +1,7 @@
 import { Type } from "./type";
 import { Picture } from "./picture";
 import { Format } from "./format";
-import { Price } from "./price";
+import { NewPrice, Price } from "./price";
 
 export interface Article {
     id: number;
@@ -13,6 +13,15 @@ export interface Article {
     picture: Picture;
     type : Type
     prices: Price[] ;
+}
+
+export interface NewArticle {
+  name: string;
+  description: string;
+  picture_id?: number;
+  type_id: number;
+  picture?: Picture;
+  prices: NewPrice[];
 }
 
 export interface ArticleToSend {

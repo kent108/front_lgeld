@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Article, ArticleToSend } from '../models/article';
+import { Article, ArticleToSend, NewArticle } from '../models/article';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -52,7 +52,7 @@ export class ArticleService {
     return this.http.delete<Article>(`http://localhost:3000/api/prices/${id}`);
   }
 
-  createArticle(newArticle: Article): Observable<Article> {
+  createArticle(newArticle: NewArticle): Observable<Article> {
     return this.http.post<Article>(
       'http://localhost:3000/api/articles',
       newArticle

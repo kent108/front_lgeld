@@ -43,9 +43,9 @@
         </h3>
         <div 
           class="flex flex-col space-y-20 ml-11"          >
-          <div *ngFor="let format of allFormats" class="flex items-center mt-4">
+          <div *ngFor="let format of allFormats" class="flex items-center mt-4" >
             <input
-            formControlName="format_id"
+              formControlName="{{'format_id_'+format.id }}"
               id="{{format.size}}"
               type="checkbox"
               value="{{format.id}}"
@@ -68,8 +68,9 @@
             >Prix Mignardise</label
           >
           <input
-           formControlName="price"
-            type="text"
+           formControlName="price_mignardise"
+
+            type="number"
             id="Mignardise"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
@@ -81,8 +82,8 @@
             >Prix Individuel</label
           >
           <input
-           formControlName="price"
-            type="text"
+           formControlName="price_individuel"
+            type="number"
             id="Individuel"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
@@ -94,8 +95,8 @@
             >Prix 6 Personnes</label
           >
           <input
-           formControlName="price"
-            type="text"
+           formControlName="price_6Pers"
+            type="number"
             id="6Personnes"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />

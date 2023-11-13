@@ -70,39 +70,7 @@ export class ArticleDetailComponent {
         // this.article.prices.push(this.price);
       });
 
-    // const articleIdfromRoute = Number(this.route.snapshot.paramMap.get('id'));
-
-    // this.articleService
-    //   .getArticleById(articleIdfromRoute)
-    //   .subscribe((article) => {
-    //     this.article = article;
-
-    //     if (this.article) {
-    //       this.formatService.getFormatsByArticleId(this.article.id).subscribe(
-    //         (formats) => {
-    //           console.log('Formats dans le composant:', formats);
-    //           this.article.formats = formats;
-    //         },
-    //         (error) => {
-    //           console.error(
-    //             'Erreur lors de la récupération des formats:',
-    //             error
-    //           );
-    //         }
-    //       );
-
-    //       this.pictureService
-    //         .getPictureById(this.article.picture_id)
-    //         .subscribe({
-    //           next: (data: Blob) => {
-    //             this.createImageFromBlob(data);
-    //           },
-    //           error: (error) => {
-    //             console.log(error);
-    //           },
-    //         });
-    //     }
-    //   });
+    
   }
 
   articleToLocalStorage(articleId: number, formatId: number) {

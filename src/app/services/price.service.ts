@@ -20,6 +20,7 @@ export class PriceService {
       article_id: articleId,
       format_id: formatId,
     };
+    console.log('Request Body:', body);
     return this.http.post<Price>(
       'http://localhost:3000/api/prices/article',
       body

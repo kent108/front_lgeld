@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Article } from 'src/app/models/article';
+import { Article, NewArticle } from 'src/app/models/article';
 import { Format } from 'src/app/models/format';
 import { Picture } from 'src/app/models/picture';
 import { Type } from 'src/app/models/type';
@@ -44,8 +44,12 @@ export class AddArticleComponent {
     description: [''],
     picture_id: [''],
     type_id: [''],
-    price: [''],
-    format_id: [''],
+    price_mignardise: [''],
+    price_individuel: [''],
+    price_6Pers: [''],
+    format_id_1: [''],
+    format_id_2: [''],
+    format_id_3: [''],
     picture: [''],
   });
 
@@ -60,10 +64,43 @@ export class AddArticleComponent {
   }
 
   submit() {
-    const newArticle: Article = { ...this.articleForm.value };
-    const test = this.articleForm.value.price;
-    newArticle.type_id = Number(newArticle.type_id);
-    const format = Number(this.articleForm.value.format_id);
+
+    // commenter son code 
+    const newArticle: NewArticle = {
+      name: this.articleForm.value.name,
+      description: this.articleForm.value.description,
+      type_id: Number(this.articleForm.value.type_id),
+      prices: [],
+    };
+    
+    if (this.articleForm.value.format_id_1) {
+      newArticle.prices.push({
+        price: this.articleForm.value.price_mignardise,
+        format: {
+          id: 1,
+        },
+      });
+    }
+
+    if (this.articleForm.value.format_id_2) {
+      newArticle.prices.push({
+        price: this.articleForm.value.price_individuel,
+        format: {
+          id: 2,
+        },
+      });
+    }
+
+    if (this.articleForm.value.format_id_3) {
+      newArticle.prices.push({
+        price: this.articleForm.value.price_6Pers,
+        format: {
+          id: 3,
+        },
+      });
+    }
+    console.log('newArticle', newArticle);
+
 
     if (this.myFile) {
       const formData = new FormData();
@@ -74,34 +111,20 @@ export class AddArticleComponent {
         console.log(newArticle, 'newArticle');
 
         this.articleService.createArticle(newArticle).subscribe((response) => {
-          this.price
-            .createPrice({
-              article_id: response.id,
-              format_id: format,
-              price: test,
-            })
-            .subscribe((priceResponse) => {
-            console.log(priceResponse, 'priceResponse');
-            console.log('Article ajouté avec succès');
-            this.articleForm.reset();
-            alert('Article ajouté avec succès'); 
-            });
+           this.articleForm.reset();
+          alert('Article ajouté avec succès'); 
 
          
           this.articleForm.reset();
         });
       });
     }
-    console.log(newArticle);
+    // console.log(newArticle);
   }
-
-  
 
   onFileChange(e: any) {
     console.log(e.target.files, 'e.target.files');
     this.myFile = e.target.files[0];
     console.log(this.myFile, 'this.myFile');
   }
-
-  
 }
