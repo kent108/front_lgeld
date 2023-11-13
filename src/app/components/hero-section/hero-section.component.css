@@ -1,0 +1,19 @@
+.text{
+    color: #7a4c46;
+
+}
+
+.galery{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .text{
+        justify-content: center;
+        text-align: center;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+}
+    

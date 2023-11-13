@@ -28,6 +28,7 @@ import { ArticleDetailComponent } from './components/article-detail/article-deta
 import { ArticleListComponent } from './components/article-list/article-list.component';
 import { CartComponent } from './components/cart/cart.component';
 import { PageConditionComponent } from './pages/page-condition/page-condition.component';
+import { HeroSectionComponent } from './components/hero-section/hero-section.component';
 
 
 
@@ -59,6 +60,7 @@ import { PageConditionComponent } from './pages/page-condition/page-condition.co
     ArticleListComponent,
     CartComponent,
     PageConditionComponent,
+    HeroSectionComponent,
   ],
   imports: [
     BrowserModule,

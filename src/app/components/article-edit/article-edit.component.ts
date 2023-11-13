@@ -1,15 +1,8 @@
 import { Component, Input } from '@angular/core';
-import {
-  Form,
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Article } from 'src/app/models/article';
 import { Format } from 'src/app/models/format';
-import { Price } from 'src/app/models/price';
 import { ArticleService } from 'src/app/services/article.service';
 import { FormatService } from 'src/app/services/format.service';
 import { pictureService } from 'src/app/services/picture.service';
@@ -23,7 +16,6 @@ import { PriceService } from 'src/app/services/price.service';
 export class ArticleEditComponent {
   allFormats: Format[] = [];
   article: Article | null = null;
-  // price: Price | null = null;
   articleIdFromRoute!: number;
   formatIdFromRoute!: number;
   pictureIdFromRoute!: number;
@@ -44,6 +36,7 @@ export class ArticleEditComponent {
     private pictureService: pictureService
   ) {}
 
+  // Formulaire de modification d'un article
   articleForm: FormGroup = this.formBuilder.group({
     name: [''],
     description: [''],
@@ -57,11 +50,18 @@ export class ArticleEditComponent {
     this.route.params.subscribe((params) => {
       const id = params['id'];
       this.articleIdFromRoute = Number(id);
+
+      // Récupération de l'article par son id
       this.articleService.getArticleById(id).subscribe((article) => {
         this.article = article;
         if (this.article) {
-          console.log(this.article);
+          this.articleForm.patchValue({
+            name: this.article.name,
+            description: this.article.description,
+            picture_id: this.article.picture_id,
+          });
 
+          // utilisation du blob pour afficher l'image
           this.pictureService
             .getPictureById(this.article.picture_id)
             .subscribe({
@@ -82,6 +82,7 @@ export class ArticleEditComponent {
     this.formatIdFromRoute = Number(routeParam.get('id'));
     this.pictureIdFromRoute = Number(routeParam.get('id'));
 
+    // Récupération du format
     this.formatService.getAllFormats().subscribe((formats) => {
       this.allFormats = formats;
     });
@@ -99,16 +100,7 @@ export class ArticleEditComponent {
       .updateArticle(blabla, this.articleIdFromRoute)
       .subscribe(() => {});
 
-    // update du format
-    console.log(
-      "format recup de l'input checkbox : ",
-      this.articleForm.value.format_id
-    );
-
     // Update du prix
-      
-
-
     this.priceService
       .getPricebyFormatAndArticle(
         this.valueCheckedFormat,
@@ -117,10 +109,12 @@ export class ArticleEditComponent {
       .subscribe((price) => {
         console.log('garry', this.articleForm.value.prices);
         console.log('price', price.id);
-        
+
         this.priceService
           .updatePriceById(this.articleForm.value.prices, price.id)
-          .subscribe(() => {});
+          .subscribe(() => {
+            this.router.navigate(['/admin']);
+          });
       });
   }
 
@@ -133,7 +127,8 @@ export class ArticleEditComponent {
     });
   }
 
-  onCheckboxChange(e : Event) {
+  // Récupération de la valeur du format selectionné
+  onCheckboxChange(e: Event) {
     const target = e.target as HTMLInputElement;
 
     if (target.checked) {

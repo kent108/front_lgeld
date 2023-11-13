@@ -12,6 +12,7 @@ import { Token } from '../models/token';
 export class UserService {
   private usersSubject = new BehaviorSubject<User[]>([]);
   public users = this.usersSubject.asObservable();
+  isAdmin: boolean = false;
 
   constructor(private readonly http: HttpClient, private router: Router) {}
 

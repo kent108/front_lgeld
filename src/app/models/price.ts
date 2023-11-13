@@ -5,7 +5,8 @@ export interface Price {
     article_id: number;
     format_id: number;
     price: number;
-    format: Format;
+  format: Format;
+  
 }
 
 export interface PriceToSend {

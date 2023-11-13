@@ -60,7 +60,7 @@ export class AddArticleComponent {
   }
 
   submit() {
-    const newArticle: Article = this.articleForm.value;
+    const newArticle: Article = { ...this.articleForm.value };
     const test = this.articleForm.value.price;
     newArticle.type_id = Number(newArticle.type_id);
     const format = Number(this.articleForm.value.format_id);
@@ -80,50 +80,22 @@ export class AddArticleComponent {
               format_id: format,
               price: test,
             })
-            .subscribe((response) => { console.log(response, 'response');
+            .subscribe((priceResponse) => {
+            console.log(priceResponse, 'priceResponse');
+            console.log('Article ajouté avec succès');
+            this.articleForm.reset();
+            alert('Article ajouté avec succès'); 
             });
 
-          console.log('Article ajouté');
+         
           this.articleForm.reset();
         });
-
-        alert('Article ajouté');
       });
     }
     console.log(newArticle);
   }
 
-  // submit() {
-  //   const newArticle: Article = this.articleForm.value;
-  //   newArticle.type_id = Number(newArticle.type_id);
-  //   const formatId = Number(this.articleForm.value.format_id);
-  //   const priceValue = Number(this.articleForm.value.price);
-
-  //   if (this.myFile) {
-  //     const formData = new FormData();
-  //     formData.append('monFichierKey', this.myFile);
-
-  //     this.pictureService.postPicture(formData).subscribe((res) => {
-  //       newArticle.picture_id = res.id;
-
-  //       this.articleService.createArticle(newArticle).subscribe((response) => {
-  //         console.log(response, 'response');
-  //         // Créer un prix en fonction du format sélectionné
-  //         this.price
-  //           .createPrice({
-  //             article_id: response.picture_id,
-  //             format_id: formatId,
-  //             price: priceValue,
-  //           })
-  //           .subscribe((response) => {});
-  //           console.log('Article et prix ajoutés avec succès');
-  //           this.articleForm.reset();
-  //         });
-
-  //       alert('Article ajouté avec succès');
-  //     });
-  //   }
-  // }
+  
 
   onFileChange(e: any) {
     console.log(e.target.files, 'e.target.files');

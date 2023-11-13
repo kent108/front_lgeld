@@ -1,6 +1,8 @@
 <div class="flex items-center justify-center p-12">
-  <div class="mx-auto w-full max-w-[550px]  p-6 space-y-8 sm:p-8 bg-transparent rounded-lg shadow-xl">
-    <form action="https://formbold.com/s/FORM_ID" method="POST">
+  <div
+    class="mx-auto w-full max-w-[550px] p-6 space-y-8 sm:p-8 bg-transparent rounded-lg shadow-xl"
+  >
+    <form (submit)="sendEmail($event)">
       <div class="mb-5">
         <label
           for="name"
@@ -47,11 +49,7 @@
         ></textarea>
       </div>
       <div>
-        <button
-          class="button"
-        >
-          Envoyer
-        </button>
+        <button class="button" type="submit">Envoyer</button>
       </div>
     </form>
   </div>
