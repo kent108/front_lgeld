@@ -4,15 +4,16 @@ import { Format } from "./format";
 import { NewPrice, Price } from "./price";
 
 export interface Article {
-    id: number;
-    name: string;
-    description: string;
-    picture_id: number;
-    type_id: number;
-    format : Format;
-    picture: Picture;
-    type : Type
-    prices: Price[] ;
+  id: number;
+  name: string;
+  description: string;
+  picture_id: number;
+  type_id: number;
+  format : Format;
+  picture: Picture;
+  type : Type
+  prices: Price[] ;
+  quantity: number;
 }
 
 export interface NewArticle {

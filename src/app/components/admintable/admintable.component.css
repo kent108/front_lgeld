@@ -11,6 +11,9 @@
 
 @media (max-width: 400px) {
  
+  .alladmintable{
+    width: 90%
+  }
 
   .admintable {
     display: flex;

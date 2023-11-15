@@ -38,30 +38,10 @@ body{
     color: #7A4C46
 }
 
-/* .button:after {
-  background-clip: padding-box;
-  background-color: #F9DCD8;
-  border: solid transparent;
-  border-radius: 16px;
-  border-width: 0 0 4px;
-  bottom: -4px;
-  content: "";
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: -1;
-} */
-
 .button:main,
 .button:focus {
   user-select: auto;
 }
-
-/* .button:hover:not(:disabled) {
-  filter: brightness(1.1);
-  -webkit-filter: brightness(1.1);
-} */
 
 .button:disabled {
   cursor: auto;

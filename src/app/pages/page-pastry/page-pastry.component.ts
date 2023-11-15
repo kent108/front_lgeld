@@ -23,8 +23,8 @@ export class PagePastryComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.articleService.getAllArticles().subscribe((formats) => {
-      this.pastryArticles = formats;
+    this.articleService.getArticlesByTypes('Pâtisserie').subscribe((articles) => {
+      this.pastryArticles = articles;
     })
 
     

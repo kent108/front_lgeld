@@ -3,7 +3,7 @@
     <!-- Image gallery -->
 
     <div class="flex justify-center">
-      <img class="w-4/12 rounded-lg" [src]="imageToShow" alt="" />
+      <img class="w-96 rounded-lg" [src]="imageToShow" alt="" />
     </div>
 
     <!-- Product info -->
@@ -15,27 +15,24 @@
           {{ article.name }}
         </h1>
         <div class="space-y-6 mt-6">
-            <p class="text-base text-gray-900">{{ article.description }}</p>
-          </div>
+          <p class="text-base text-gray-900">{{ article.description }}</p>
+        </div>
       </div>
       <div>
-        
         <!-- Options -->
-
 
         <!-- Options -->
         <div class="mt-4 lg:row-span-3 lg:mt-0">
           <h2 class="sr-only"></h2>
           <div>
             <label for="format">Choisir un format: </label>
-            <select 
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-m rounded-xl g focus:ring-red-200 focus:border-red-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
+            <select
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-m rounded-xl g focus:ring-red-200 focus:border-red-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
               id="format"
               [(ngModel)]="selectedFormat"
               *ngIf="article.prices"
             >
               <option
-            
                 *ngFor="let prix of article.prices"
                 [value]="prix.format.id"
                 (change)="articleToLocalStorage(article.id, prix.format.id)"
@@ -45,9 +42,12 @@
             </select>
           </div>
           <button class="button mt-6" role="button" (click)="addToCart()">
-            Ajouter au panier
+            Ajouter au devis
           </button>
         </div>
+        <button class="button mt-6" role="button" (click)="goBack()">
+          Retour
+        </button>
       </div>
 
       <div

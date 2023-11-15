@@ -1,32 +1,60 @@
-<div class="container mx-auto px-4 py-8 cart-item bg-white rounded-lg shadow-md">
-    <div class="flex flex-col md:flex-row md:justify-between md:items-center">
-        <h1 class="text-2xl font-bold my-4">DEVIS</h1>
-        <button class="button-devis">
-      Demande de devis
-    </button>
-    </div>
-    <div class="mt-8">
-        <ng-container *ngFor="let item of items" class="flex flex-col md:flex-row border-b border-gray-400 py-4" > 
-            <div class="mt-4 md:mt-0 md:ml-6" *ngFor="let price of item.prices" >
-                <h2 class="text-lg font-bold">{{item.name}}</h2>
-                <p class="mt-2 text-gray-600">{{item.description}}</p>
-                <div class="mt-4 flex items-center">
-                    <span class="mr-2 text-gray-600">Quantity:</span>
-                    <div class="flex items-center">
-                        <button class="bg-gray-200 rounded-l-lg px-2 py-1" >-</button>
-                        <span class="mx-2 text-gray-600">1</span>
-                        <button class="bg-gray-200 rounded-r-lg px-2 py-1" >+</button>
-                    </div>
-                    <span class="ml-auto font-bold">{{price.price}}</span>
-                </div>
-            </div>
-        </ng-container>
-        
+<div
+  class="container mx-auto px-4 py-8 cart-item bg-transparent rounded-lg shadow-md"
+>
+  <div class="flex flex-col md:flex-row md:justify-between md:items-center">
+    <h1 class="text-2xl font-bold my-4">DEVIS</h1>
+  </div>
+  <div class="mt-8">
+    <ng-container
+      *ngFor="let item of items"
+      class="flex flex-col md:flex-row border-b border-gray-400 py-4"
+    >
+      <div class="mt-4 md:mt-0 md:ml-6" *ngFor="let price of item.prices">
+        <h2 class="text-lg font-bold">{{ item.name }}</h2>
+        <p class="mt-2 text-gray-600">{{ price.format.size }}</p>
+        <div class="mt-4 flex items-center">
+          <!-- <span class="mr-2 text-gray-600">Quantity:</span> -->
+          <!-- <div class="flex items-center"> -->
+          <!-- <button class="bg-gray-200 rounded-l-lg px-2 py-1" >-</button> -->
+          <!-- <span class="mx-2 text-gray-600">1</span> -->
+          <!-- <button class="bg-gray-200 rounded-r-lg px-2 py-1" >+</button> -->
+          <!-- </div> -->
+          <span class="ml-auto font-bold">{{ price.price }} €</span>
+        </div>
+      </div>
+    </ng-container>
+
     <div class="flex justify-end items-center mt-8">
-        <span class="text-gray-600 mr-4">Total:</span>
-        <span class="text-xl font-bold mr-4">$$</span>
-        <button class="button-devis" (click)="clearCart()">
-         Vider mon panier
-       </button>
+      <!-- <span class="text-gray-600 mr-4">Total:</span> -->
+      <!-- <span class="text-xl font-bold mr-4">$$</span> -->
+      <button class="button-devis" (click)="clearCart()">
+        Vider mon panier
+      </button>
     </div>
+  </div>
+
+  <form (submit)="sendEmailDevis($event)">
+  <label
+    for="email"
+    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+    >Votre e-mail</label
+  >
+  <input
+    type="email"
+    id="email"
+    aria-describedby="helper-text-explanation"
+    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-52 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+    placeholder="nom@mail.com"
+  />
+
+  <p
+    id="helper-text-explanation"
+    class="mt-2 text-sm text-gray-500 dark:text-gray-400"
+  >
+    Ajoutez votre e-mail et cliquez sur le bouton ci-dessous pour réaliser une
+    demande de devis
+  </p>
+
+  <button type="submit" class="button-devis mt-6">Demande de devis</button>
+</form>
 </div>
