@@ -14,9 +14,7 @@ export class NavbarComponent {
   constructor(private AuthGuardService: AuthGuardService,) { }
 
   ngOnInit(): void {
-    this.AuthGuardService.isAdmin$.subscribe((resp) => {
-      this.isAdmin = resp?.toString() === 'true';
-    })
+    
   }
 }
 

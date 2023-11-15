@@ -14,18 +14,20 @@ import { ArticleDetailComponent } from './components/article-detail/article-deta
 import { AddArticleComponent } from './components/add-article/add-article.component';
 import { CartComponent } from './components/cart/cart.component';
 import { PageConditionComponent } from './pages/page-condition/page-condition.component';
+import { authGuard } from './guards/auth.guard';
+import { connectedGuard } from './guards/connected.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: PageHomeComponent },
-  { path: 'login', component: PageConnectComponent },
+  { path: 'login', component: PageConnectComponent, canActivate: [connectedGuard] },
   { path: 'about', component: PageAboutComponent },
   { path: 'pastry', component: PagePastryComponent },
   { path: 'traiteur', component: PageTraiteurComponent },
   { path: 'contact', component: PageContactComponent },
   { path: 'subscribe', component: PageSubscribeComponent },
   { path: 'info', component: PageInfoComponent },
-  { path: 'admin', component: PageAdminComponent },
+  { path: 'admin', component: PageAdminComponent, canActivate: [authGuard] },
   { path: 'article-edit/:id', component: ArticleEditComponent },
   { path: 'article-detail/:id', component: ArticleDetailComponent },
   { path: 'add-article', component: AddArticleComponent },

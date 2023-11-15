@@ -8,12 +8,12 @@
       >
         Les goûts et les douceurs
       </h1>
-      <p
+      <!-- <p
         class="mb-6 text-lg font-normal text-gray-500 lg:text-2xl dark:text-gray-400"
       >
         Je suis heureuse de vous acceuillir sur mon site. Je vous invite à vous
         inscrire pour poursuivre votre aventure.
-      </p>
+      </p> -->
     </div>
     <div>
       <div
@@ -23,22 +23,22 @@
           Connectez-vous
         </h2>
         <form
-          [formGroup]="loginForm"
+          [formGroup]="login"
           (ngSubmit)="onSubmit()"
           class="mt-8 space-y-6"
         >
           <div>
             <label
-              for="email"
+              for="mail"
               class="block mb-2 text-xl font-large text-gray-900 dark:text-white"
               >Votre email</label
             >
             <input
-              type="email"
+              type="mail"
               formControlName="mail"
-              id="email"
+              id="mail"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-200 focus:border-red-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
-              placeholder="nom@email.com"
+              placeholder="nom@mail.com"
               required
             />
           </div>
@@ -58,14 +58,14 @@
             />
           </div>
           <button type="submit" class="button">Connexion</button>
-          <div class="text-xl font-medium text-gray-900 dark:text-white">
+          <!-- <div class="text-xl font-medium text-gray-900 dark:text-white">
             Pas encore de compte ?
             <a
               [routerLink]="['/subscribe']"
               class="text-yellow-600 hover:underline dark:text-blue-500"
               >Créer un compte</a
             >
-          </div>
+          </div> -->
         </form>
       </div>
     </div>

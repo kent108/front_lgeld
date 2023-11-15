@@ -7,6 +7,7 @@ import { Price } from 'src/app/models/price';
 import { Type } from 'src/app/models/type';
 import { ArticleService } from 'src/app/services/article.service';
 import { PriceService } from 'src/app/services/price.service';
+import { AuthInterceptorService } from 'src/app/services/auth-interceptor.service';
 
 @Component({
   selector: 'app-admintable',
@@ -73,5 +74,11 @@ export class AdmintableComponent {
 
   toggleModal() {
     this.showModal = !this.showModal;
+  }
+
+  logOut() {
+    // localStorage.clear();
+    localStorage.removeItem('access_token');
+    this.router.navigate(['/home']);
   }
 }

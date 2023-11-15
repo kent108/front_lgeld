@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Token } from 'src/app/models/token';
-import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
+import { AuthInterceptorService } from 'src/app/services/auth-interceptor.service'; 
 
 @Component({
   selector: 'app-page-connect',
@@ -11,62 +11,70 @@ import { Router } from '@angular/router';
   styleUrls: ['./page-connect.component.css'],
 })
 export class PageConnectComponent {
-  loginForm: FormGroup;
+  mail!: string;
+  password!: string;
+  login!: FormGroup;
 
   constructor(
-    private formBuilder: FormBuilder,
-    private userService: UserService,
-    private router: Router
-  ) {
+    private router: Router,
+    private fb: FormBuilder,
+    private AuthInterceptorService: AuthInterceptorService,
+  ) {  }
 
-    this.loginForm = this.formBuilder.group({
-      mail: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
-    });
+  ngOnInit(): void {
+    // Suppression de l'ancien token
+    // this.authService.logout();
+    this.initialForm();
   }
 
+  private initialForm() { 
+    this.login = this.fb.group({
+      mail: ['', Validators.required],
+      password: ['', Validators.required],
+    });
+  ;}
+
   onSubmit() {
-    if (this.loginForm.valid) {
-      const userLogin: User = this.loginForm.value; // On récupère les données du formulaire
-      console.log('je suis dans le submit, userLogin = ', userLogin);
-      this.userService.loginUser(userLogin).subscribe(
-        (res: Token) => {
-          // On envoie l'utilisateur au serveur
-          console.log('je suis dans le submit et je récupère res = ', res);
-          const token = res.accessToken; // On récupère le token
+   if (this.login.valid) {
+     let mail = this.login.value.mail;
+     let password = this.login.value.password;
+     this.AuthInterceptorService.login(mail, password).subscribe({
+       next: (response: any) => {
+         console.log('Réponse complète du serveur :', response);
+         if (response && response.accessToken) {
+           localStorage.setItem('access_token', response.accessToken);
+          //  localStorage.setItem('id', response.user.id);
+          //  localStorage.setItem('access', response.user.access);
+          //  localStorage.setItem('full_access', response.user.full_access);
+           
+           this.AuthInterceptorService.isConnected$.next(
+             localStorage.getItem('access_token')
+           );
+           console.log('Connexion réussie et token stocké!');
+           this.router.navigate(['/admin']);
+           
+         } else {
+           console.error('Token non reçu dans la réponse.');
+         }
+       },
+       error: (error: any) => {
+         console.error('Erreur lors de la connexion:', error);
+        
+       },
+     });
+   }
 
-          // Stocker le token dans le localStorage
-          localStorage.setItem('token', token);
+    //    const userLogin: User = this.loginForm.value; // On récupère les données du formulaire
+    //     console.log('je suis dans le submit, userLogin = ', userLogin);
+    //     this.userService.loginUser(userLogin).subscribe(
+    //       (res: Token) => {
+    //         // On envoie l'utilisateur au serveur
+    //         console.log('je suis dans le submit et je récupère res = ', res);
+    //         const token = res.accessToken; // On récupère le token
 
-          // 2 - Utilisation du behaviour subject (du UserService) pour transmettre la valeur true
-          // this.userService.setLoggedIn(true);
+    //         // Stocker le token dans le localStorage
+    //         localStorage.setItem('token', token);
 
-          // Afficher la modale de succès
-          // const loginModalElement = document.getElementById(
-          //   'defaultModal'
-          // ) as HTMLElement;
-          // const defaultModal = new Modal(loginModalElement);
-          // defaultModal.show();
-
-          // console.log('Token:', token);
-
-          // si utilisateur est admin
-          // const isAdmin = res.user.;
-          // localStorage.setItem('admin', isAdmin);
-          // if (isAdmin) {
-          //   this.AuthGuardService.isAdmin$.next(localStorage.getItem('admin'));
-          //   // this.router.navigate(['/admin']);
-          // }
-        },
-        (error) => {
-          // const errorModalElement = document.getElementById(
-          //   'errorModal'
-          // ) as HTMLElement;
-          // const errorModal = new Modal(errorModalElement);
-          // errorModal.show();
-          // console.error('Erreur lors de la connexion:', error);
-        }
-      );
-    }
+    // }
   }
 }
