@@ -25,6 +25,13 @@ export class CartComponent {
     console.log(this.items);
   }
 
+  // supprimer un article du local storage et recharge la page
+  removeItem(article: Article) {
+    this.cartService.removeItem(article);
+    window.location.reload();
+  
+  }
+
   clearCart() {
     this.items = this.cartService.clearCart();
   }

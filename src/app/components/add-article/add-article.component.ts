@@ -63,16 +63,19 @@ export class AddArticleComponent {
     });
   }
 
-  submit() {
+  goBack(): void {
+    this.router.navigate(['/admin'], { relativeTo: this.route });
+  } 
 
-    // commenter son code 
+  submit() {
+    // commenter son code
     const newArticle: NewArticle = {
       name: this.articleForm.value.name,
       description: this.articleForm.value.description,
       type_id: Number(this.articleForm.value.type_id),
       prices: [],
     };
-    
+
     if (this.articleForm.value.format_id_1) {
       newArticle.prices.push({
         price: this.articleForm.value.price_mignardise,
@@ -101,7 +104,6 @@ export class AddArticleComponent {
     }
     console.log('newArticle', newArticle);
 
-
     if (this.myFile) {
       const formData = new FormData();
       formData.append('monFichierKey', this.myFile);
@@ -111,10 +113,9 @@ export class AddArticleComponent {
         console.log(newArticle, 'newArticle');
 
         this.articleService.createArticle(newArticle).subscribe((response) => {
-           this.articleForm.reset();
-          alert('Article ajouté avec succès'); 
+          this.articleForm.reset();
+          alert('Article ajouté avec succès');
 
-         
           this.articleForm.reset();
         });
       });
@@ -127,4 +128,5 @@ export class AddArticleComponent {
     this.myFile = e.target.files[0];
     console.log(this.myFile, 'this.myFile');
   }
+
 }

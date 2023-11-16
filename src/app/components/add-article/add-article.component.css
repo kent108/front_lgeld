@@ -1,0 +1,28 @@
+.buttonValider{
+    justify-content: center;
+    max-width: 130px;
+  appearance: button;
+  background-color: #F9DCD8;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-size: 15px;
+  letter-spacing: .8px;
+  line-height: 20px;
+  overflow: visible;
+  padding: 16px 16px;
+  text-align: center;
+  transform: translateZ(0);
+  transition: filter .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  width: 100%;
+}
+
+.buttonValider:hover {
+ 
+    background-color: #C7B0AD;
+    color: #7A4C46
+}

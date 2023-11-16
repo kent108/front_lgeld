@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthGuardService } from 'src/app/services/auth-guard.service';
+
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -11,7 +11,7 @@ export class NavbarComponent {
   isAdmin: boolean = false;
   
 
-  constructor(private AuthGuardService: AuthGuardService,) { }
+  constructor() { }
 
   ngOnInit(): void {
     

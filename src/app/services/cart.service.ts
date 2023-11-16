@@ -29,6 +29,14 @@ export class CartService {
     return this.items;
   }
 
+  removeItem(article: Article) {
+    // Retirer un article du panier
+    this.items = this.items.filter((item) => item !== article);
+    // Mettre à jour le local storage
+    localStorage.setItem('cart', JSON.stringify(this.items));
+    return this.items;
+  }
+
   
   constructor() { }
 }

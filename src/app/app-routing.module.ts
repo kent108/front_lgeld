@@ -25,7 +25,7 @@ const routes: Routes = [
   { path: 'pastry', component: PagePastryComponent },
   { path: 'traiteur', component: PageTraiteurComponent },
   { path: 'contact', component: PageContactComponent },
-  { path: 'subscribe', component: PageSubscribeComponent },
+  // { path: 'subscribe', component: PageSubscribeComponent },
   { path: 'info', component: PageInfoComponent },
   { path: 'admin', component: PageAdminComponent, canActivate: [authGuard] },
   { path: 'article-edit/:id', component: ArticleEditComponent },

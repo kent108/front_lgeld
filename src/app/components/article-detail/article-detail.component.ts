@@ -93,7 +93,7 @@ export class ArticleDetailComponent {
     
     // Utilisez le prix correspondant au format sélectionné
     const selectedPrice = this.article.prices.find(
-      (price) => price.format_id == this.selectedFormat// ERREUR ICI
+      (price) => price.format_id == this.selectedFormat 
     );
     
 
