@@ -6,7 +6,7 @@
   </div>
   <div class="mt-8">
     <ng-container
-      *ngFor="let item of items"
+      *ngFor="let item of cartDevis"
       class="flex flex-col md:flex-row border-b border-gray-400 py-4"
     >
       <div class="mt-4 md:mt-0 md:ml-6" *ngFor="let price of item.prices">
@@ -40,7 +40,7 @@
     </div>
   </div>
 
-  <form (submit)="sendEmailDevis($event)">
+  <form (submit)="confirm($event)">
     <label
       for="email"
       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -61,7 +61,8 @@
       Ajoutez votre e-mail et cliquez sur le bouton ci-dessous pour réaliser une
       demande de devis
     </p>
-
+    <p-toast></p-toast>
+    <p-confirmPopup></p-confirmPopup>
     <button type="submit" class="button-devis mt-6">Demande de devis</button>
   </form>
 </div>

@@ -7,6 +7,8 @@ import { CartService } from 'src/app/services/cart.service';
 import { PriceService } from 'src/app/services/price.service';
 import { pictureService } from 'src/app/services/picture.service';
 import * as emailjs from '@emailjs/browser';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-cart',
@@ -15,25 +17,54 @@ import * as emailjs from '@emailjs/browser';
 })
 export class CartComponent {
   totalPrice: number = 0;
-  items = this.cartService.getItems();
   @Input() article!: Article;
+  cartDevis!: Article[];
 
-  constructor(private cartService: CartService) {}
+  constructor(
+    private cartService: CartService,
+    private confirmationService: ConfirmationService,
+    private messageService: MessageService
+  ) {}
 
   ngOnInit(): void {
-    this.items = this.cartService.getItems();
-    console.log(this.items);
+    this.cartDevis = this.cartService.getItems();
+    // console.log(this.cartDevis);
+    this.cartService.cartDevis$.subscribe((cartDevis) => {
+      this.cartDevis = cartDevis;
+      console.log('ici', cartDevis);
+    });
   }
 
   // supprimer un article du local storage et recharge la page
   removeItem(article: Article) {
     this.cartService.removeItem(article);
-    window.location.reload();
-  
   }
 
   clearCart() {
-    this.items = this.cartService.clearCart();
+    this.cartDevis = this.cartService.clearCart();
+  }
+
+  confirm(event: Event) {
+    this.confirmationService.confirm({
+      target: event.target as EventTarget,
+      message: 'Voulez-vous envoyer la demande de devis?',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.sendEmailDevis(event);      
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Confirmation',
+          detail: "La demande a été envoyée",
+        });
+      },
+      reject: () => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Annulation',
+          detail: 'La demande a été annulée',
+        });
+      },
+    });
   }
 
   sendEmailDevis(e: Event) {
@@ -54,7 +85,7 @@ export class CartComponent {
       subject: 'Demande de devis',
       name: 'Ebru',
       email: userEmail,
-      body: this.items
+      body: this.cartDevis
         .map(
           (item) =>
             `${item.name} - ${item.prices
@@ -79,7 +110,7 @@ export class CartComponent {
   }
 
   formatBody(userEmail: string): string {
-    const itemsInfo = this.items
+    const cartDevisInfo = this.cartDevis
       .map((item) => {
         const itemName = item.name;
         const pricesInfo = item.prices
@@ -96,7 +127,7 @@ export class CartComponent {
 
     return `
     Produits :
-    ${itemsInfo}
+    ${cartDevisInfo}
 
     Email client : ${userEmail}
   `;
@@ -105,9 +136,9 @@ export class CartComponent {
   // Méthode pour formater les produits dans le corps de l'e-mail
   formatProducts(): string {
     // Implémente cette méthode pour formater la liste des produits
-    // Utilise this.items et autres données nécessaires
+    // Utilise this.cartDevis et autres données nécessaires
     // Exemple fictif :
-    return this.items
+    return this.cartDevis
       .map((item) => `${item.name} - ${item.prices} €`)
       .join('\n');
   }
@@ -115,8 +146,8 @@ export class CartComponent {
   // // Méthode pour calculer le total du panier
   // calculateTotal(): number {
   //   // Implémente cette méthode pour calculer le total du panier
-  //   // Utilise this.items et autres données nécessaires
+  //   // Utilise this.cartDevis et autres données nécessaires
   //   // Exemple fictif :
-  //   return this.items.reduce((total, item) => total + item.prices, 0);
+  //   return this.cartDevis.reduce((total, item) => total + item.prices, 0);
   // }
 }

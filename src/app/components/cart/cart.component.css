@@ -26,3 +26,23 @@
     background-color: #F9DCD8;
     color: #7A4C46
 }
+
+/* ::ng-deep .p-button-label{
+  margin:  20px
+} */
+ 
+
+
+::ng-deep .p-confirm-popup-footer {
+  display: flex;
+justify-content: space-between;
+}
+
+::ng-deep .p-button{
+  transition-duration: 0s;
+}
+
+::ng-deep .p-ripple {
+  margin-right: 8px;
+  
+}

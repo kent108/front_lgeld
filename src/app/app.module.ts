@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { ToastModule } from 'primeng/toast';
+import { MessagesModule } from 'primeng/messages';
+import { ButtonModule } from 'primeng/button';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -29,6 +33,7 @@ import { ArticleListComponent } from './components/article-list/article-list.com
 import { CartComponent } from './components/cart/cart.component';
 import { PageConditionComponent } from './pages/page-condition/page-condition.component';
 import { HeroSectionComponent } from './components/hero-section/hero-section.component';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 
 
@@ -68,8 +73,13 @@ import { HeroSectionComponent } from './components/hero-section/hero-section.com
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    ConfirmPopupModule,
+    ToastModule,
+    MessagesModule,
+    ButtonModule,
+    BrowserAnimationsModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ConfirmationService, MessageService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
