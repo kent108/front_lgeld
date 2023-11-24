@@ -23,10 +23,15 @@ export class CartComponent {
   constructor(
     private cartService: CartService,
     private confirmationService: ConfirmationService,
-    private messageService: MessageService
+    private messageService: MessageService,    
   ) {}
 
+
+
   ngOnInit(): void {
+   
+
+
     this.cartDevis = this.cartService.getItems();
     // console.log(this.cartDevis);
     this.cartService.cartDevis$.subscribe((cartDevis) => {
@@ -50,11 +55,11 @@ export class CartComponent {
       message: 'Voulez-vous envoyer la demande de devis?',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
-        this.sendEmailDevis(event);      
+        this.sendEmailDevis(event);
         this.messageService.add({
           severity: 'success',
           summary: 'Confirmation',
-          detail: "La demande a été envoyée",
+          detail: 'La demande a été envoyée',
         });
       },
       reject: () => {
@@ -64,6 +69,8 @@ export class CartComponent {
           detail: 'La demande a été annulée',
         });
       },
+      acceptLabel: 'Oui',
+      rejectLabel: 'Non',
     });
   }
 
@@ -151,3 +158,7 @@ export class CartComponent {
   //   return this.cartDevis.reduce((total, item) => total + item.prices, 0);
   // }
 }
+function bypassSecurityTrustScript(txt: string) {
+  throw new Error('Function not implemented.');
+}
+

@@ -46,3 +46,7 @@ justify-content: space-between;
   margin-right: 8px;
   
 }
+
+::ng-deep .p-confirm-popup-message {
+ margin-left: 0px;
+}

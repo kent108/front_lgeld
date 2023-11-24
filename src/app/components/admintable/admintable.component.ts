@@ -1,5 +1,4 @@
 import { Component, Injectable, Input } from '@angular/core';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Article } from 'src/app/models/article';
 import { Format } from 'src/app/models/format';
@@ -23,20 +22,14 @@ export class AdmintableComponent {
   types: Type[] = [];
   formats: Format[] = [];
   prices: Price[] = [];
-  // articlesAvecDoublon: any[] = [];
 
   constructor(
     private articleService: ArticleService,
     private router: Router,
     private priceService: PriceService,
-    private sanitizer: DomSanitizer
   ) {}
 
-  public safeHtml!: SafeHtml;
-  public dangerousHtml = '<script>alert("Danger!")</script>';
-
   ngOnInit(): void {
-    this.safeHtml = this.sanitizer.bypassSecurityTrustHtml(this.dangerousHtml);
 
     this.articleService.getAllArticles().subscribe((formats) => {
       this.articles = formats;
