@@ -40,41 +40,25 @@ export class PageConnectComponent {
      let password = this.login.value.password;
      this.AuthInterceptorService.login(mail, password).subscribe({
        next: (response: any) => {
-         console.log('Réponse complète du serveur :', response);
+        
          if (response && response.accessToken) {
            localStorage.setItem('access_token', response.accessToken);
-          //  localStorage.setItem('id', response.user.id);
-          //  localStorage.setItem('access', response.user.access);
-          //  localStorage.setItem('full_access', response.user.full_access);
-           
+                     
            this.AuthInterceptorService.isConnected$.next(
              localStorage.getItem('access_token')
            );
-           console.log('Connexion réussie et token stocké!');
+          ;
            this.router.navigate(['/admin']);
            
          } else {
-           console.error('Token non reçu dans la réponse.');
+           
          }
        },
        error: (error: any) => {
-         console.error('Erreur lors de la connexion:', error);
+        
         
        },
      });
    }
-
-    //    const userLogin: User = this.loginForm.value; // On récupère les données du formulaire
-    //     console.log('je suis dans le submit, userLogin = ', userLogin);
-    //     this.userService.loginUser(userLogin).subscribe(
-    //       (res: Token) => {
-    //         // On envoie l'utilisateur au serveur
-    //         console.log('je suis dans le submit et je récupère res = ', res);
-    //         const token = res.accessToken; // On récupère le token
-
-    //         // Stocker le token dans le localStorage
-    //         localStorage.setItem('token', token);
-
-    // }
   }
 }

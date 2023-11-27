@@ -33,10 +33,10 @@ export class CartComponent {
 
 
     this.cartDevis = this.cartService.getItems();
-    // console.log(this.cartDevis);
+   
     this.cartService.cartDevis$.subscribe((cartDevis) => {
       this.cartDevis = cartDevis;
-      console.log('ici', cartDevis);
+      
     });
   }
 
@@ -101,17 +101,17 @@ export class CartComponent {
         )
         .join('\n'),
     };
-    console.log('E-mail Body:', params.body);
+    
 
     // Envoie l'e-mail avec EmailJS
     emailjs
       .send(serviceID, templateID, params, userID)
       .then((response) => {
-        console.log('Email envoyé avec succès:', response);
+       
         // Ajoute ici la logique supplémentaire après l'envoi de l'e-mail si nécessaire
       })
       .catch((error) => {
-        console.error("Erreur lors de l'envoi de l'email:", error);
+        
         // Ajoute ici la logique pour gérer les erreurs d'envoi d'e-mail si nécessaire
       });
   }

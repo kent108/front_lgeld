@@ -46,11 +46,10 @@ export class ArticleDetailComponent {
     this.articleService
       .getArticleById(articleIdfromRoute)
       .subscribe((article) => {
-        // console.log(article);
-
+        
         this.article = article;
         if (this.article) {
-          console.log(this.article);
+          
 
           this.pictureService
             .getPictureById(this.article.picture_id)
@@ -59,7 +58,7 @@ export class ArticleDetailComponent {
                 this.createImageFromBlob(data);
               },
               error: (error) => {
-                console.log(error);
+              
               },
             });
         }
@@ -74,11 +73,11 @@ export class ArticleDetailComponent {
   }
 
   articleToLocalStorage(articleId: number, formatId: number) {
-    console.log(formatId);
+  
 
     this.articleService.getArticleById(articleId).subscribe((article) => {
       this.articleToCart = article;
-      console.log(this.articleToCart);
+      
     });
   }
 

@@ -69,7 +69,7 @@ export class ArticleEditComponent {
                 this.createImageFromBlob(data);
               },
               error: (error) => {
-                console.log(error);
+                
               },
             });
         }
@@ -107,9 +107,6 @@ export class ArticleEditComponent {
         this.article?.id as number
       )
       .subscribe((price) => {
-        console.log('garry', this.articleForm.value.prices);
-        console.log('price', price.id);
-
         this.priceService
           .updatePriceById(this.articleForm.value.prices, price.id)
           .subscribe(() => {
@@ -133,7 +130,6 @@ export class ArticleEditComponent {
 
     if (target.checked) {
       this.valueCheckedFormat = Number(target.value);
-      console.log('valueCheckedFormat : ', this.valueCheckedFormat);
     }
   }
 }

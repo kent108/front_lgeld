@@ -18,7 +18,7 @@ export class CartService {
         this.cartDevis$.subscribe((cartDevis) => {
           this.cartDevis = cartDevis;
         });
-        console.log('dans add',this.cartDevis);
+       
     
   }
 
@@ -36,7 +36,7 @@ export class CartService {
     this.cartDevis$.subscribe((cartDevis) => {
       this.cartDevis = cartDevis
     })
-    console.log(this.cartDevis);
+  
     
     return this.cartDevis;
   }

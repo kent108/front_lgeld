@@ -26,14 +26,12 @@ export class AdmintableComponent {
   constructor(
     private articleService: ArticleService,
     private router: Router,
-    private priceService: PriceService,
+    private priceService: PriceService
   ) {}
 
   ngOnInit(): void {
-
     this.articleService.getAllArticles().subscribe((formats) => {
       this.articles = formats;
-      console.log(this.articles);
     });
   }
 
@@ -45,21 +43,14 @@ export class AdmintableComponent {
     this.router.navigate(['/add-article']);
   }
 
-  // deleteArticle(id: number): void {
-  //   this.articleService.deletePriceById(id).subscribe(() => {
-  //      console.log('Suppression réussie');
-  //     this.articles = this.articles.filter((article) => article.id !== id);
-  //   });
-  // }
-
   deleteArticleByPrice(price: number): void {
     this.articleService.deleteArticleByPrice(price).subscribe(
       (response) => {
-        console.log(response, 'Suppression réussie');
         // Refresh the list of articles or handle the response as needed
+        
       },
       (error) => {
-        console.error(error, 'Suppression échouée');
+       
         // Handle the error as needed
       }
     );

@@ -13,9 +13,7 @@ export class FormatService {
 
   getAllFormats() {
     return this.http.get<Format[]>(this.url);
-  }
-
-  
+  }  
 
   getFormatsByArticleId(articleId: number): Observable<Format[]> {
     return this.http

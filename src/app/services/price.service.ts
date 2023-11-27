@@ -20,7 +20,7 @@ export class PriceService {
       article_id: articleId,
       format_id: formatId,
     };
-    console.log('Request Body:', body);
+    
     return this.http.post<Price>(
       'http://localhost:3000/api/prices/article',
       body
@@ -32,7 +32,6 @@ export class PriceService {
       format_id: formatId,
       article_id: article_id,
     };
-    console.log(body);
     return this.http.post<Price>(
       'http://localhost:3000/api/prices/article',
       body

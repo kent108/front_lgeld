@@ -102,7 +102,7 @@ export class AddArticleComponent {
         },
       });
     }
-    console.log('newArticle', newArticle);
+    
 
     if (this.myFile) {
       const formData = new FormData();
@@ -110,7 +110,7 @@ export class AddArticleComponent {
 
       this.pictureService.postPicture(formData).subscribe((res) => {
         newArticle.picture_id = res.id;
-        console.log(newArticle, 'newArticle');
+        
 
         this.articleService.createArticle(newArticle).subscribe((response) => {
           this.articleForm.reset();
@@ -120,13 +120,13 @@ export class AddArticleComponent {
         });
       });
     }
-    // console.log(newArticle);
+   
   }
 
   onFileChange(e: any) {
-    console.log(e.target.files, 'e.target.files');
+    
     this.myFile = e.target.files[0];
-    console.log(this.myFile, 'this.myFile');
+    
   }
 
 }

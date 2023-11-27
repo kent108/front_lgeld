@@ -16,7 +16,7 @@ export class PageContactComponent {
       email: (document.getElementById('email') as HTMLInputElement).value,
       message: (document.getElementById('message') as HTMLInputElement).value,      
     };
-    console.log(templateParams);
+    
 
     emailjs
       .send(
